@@ -245,15 +245,6 @@
     <div class="main-panel">
       <top-navbar></top-navbar>
 
-      <fixed-plugin
-        :color.sync="sidebarBackground"
-        :colorBg.sync="sidebarBackgroundColor"
-        :sidebarMini.sync="sidebarMini"
-        :sidebarImg.sync="sidebarImg"
-        :image.sync="sidebarBackgroundImage"
-      >
-      </fixed-plugin>
-
       <div
         :class="{ content: !$route.meta.hideContent }"
         @click="toggleSidebar"
@@ -306,7 +297,6 @@ function reinitScrollbar() {
 import TopNavbar from "./TopNavbar.vue";
 import ContentFooter from "./ContentFooter.vue";
 import MobileMenu from "./Extra/MobileMenu.vue";
-import FixedPlugin from "../../FixedPlugin.vue";
 import UserMenu from "./Extra/UserMenu.vue";
 import { ZoomCenterTransition } from "vue2-transitions";
 
@@ -314,7 +304,6 @@ export default {
   components: {
     TopNavbar,
     ContentFooter,
-    FixedPlugin,
     MobileMenu,
     UserMenu,
     ZoomCenterTransition,
