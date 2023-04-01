@@ -1,11 +1,5 @@
 <template>
-  <div
-    class="wrapper"
-    :class="[
-      { 'nav-open': $sidebar.showSidebar },
-      { rtl: $route.meta.rtlActive },
-    ]"
-  >
+  <div class="wrapper" :class="[{ 'nav-open': $sidebar.showSidebar }]">
     <notifications></notifications>
     <side-bar
       :active-color="sidebarBackground"
@@ -16,229 +10,48 @@
       <mobile-menu></mobile-menu>
       <template slot="links">
         <sidebar-item
-          v-if="$route.meta.rtlActive"
+          :link="{ name: 'Dashboard', icon: 'dashboard', path: '/dashboard' }"
+        >
+        </sidebar-item>
+        <sidebar-item :link="{ name: 'NETWORK', icon: 'schema' }">
+          <sidebar-item
+            :link="{ name: 'My Network', path: '/pricing' }"
+          ></sidebar-item>
+          <sidebar-item
+            :link="{ name: 'Network Accounting', path: '/pages/rtl' }"
+          ></sidebar-item>
+        </sidebar-item>
+        <sidebar-item :link="{ name: 'Company', icon: 'apartment' }">
+          <sidebar-item
+            :link="{ name: 'Roadmap', path: '/pages/timeline' }"
+          ></sidebar-item>
+        </sidebar-item>
+        <sidebar-item
+          :link="{ name: 'Package', icon: 'redeem', path: '/package' }"
+        >
+        </sidebar-item>
+        <sidebar-item
+          :link="{ name: 'Withdraw', icon: 'paid', path: '/withdraw' }"
+        >
+        </sidebar-item>
+        <sidebar-item
           :link="{
-            name: 'لوحة القيادةة',
-            icon: 'dashboard',
-            path: '/dashboard',
+            name: 'Support',
+            icon: 'contact_support',
+            path: '/support',
           }"
         >
         </sidebar-item>
         <sidebar-item
-          v-else
-          :link="{ name: 'Dashboard', icon: 'dashboard', path: '/dashboard' }"
+          :link="{
+            name: 'Transaction',
+            icon: 'receipt_long',
+            path: '/transaction',
+          }"
         >
         </sidebar-item>
         <sidebar-item
-          v-if="$route.meta.rtlActive"
-          :link="{ name: 'صفحات', icon: 'image' }"
-        >
-          <sidebar-item
-            :link="{ name: 'التسعير', path: '/pricing' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: 'دعم رتل', path: '/pages/rtl' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: 'الجدول الزمني', path: '/pages/timeline' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: 'صفحة تسجيل الدخول', path: '/login' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: 'سجل الصفحة', path: '/register' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: 'قفل صفحة الشاشة', path: '/lock' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: 'ملف تعريفي للمستخدم', path: '/pages/user' }"
-          ></sidebar-item>
-        </sidebar-item>
-        <sidebar-item v-else :link="{ name: 'Pages', icon: 'image' }">
-          <sidebar-item
-            :link="{ name: 'Pricing', path: '/pricing' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: 'RTL Support', path: '/pages/rtl' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: 'Timeline', path: '/pages/timeline' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: 'Login', path: '/login' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: 'Register', path: '/register' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: 'Lock Screen', path: '/lock' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: 'User Profile', path: '/pages/user' }"
-          ></sidebar-item>
-        </sidebar-item>
-        <sidebar-item
-          v-if="$route.meta.rtlActive"
-          :link="{ name: 'المكونات', icon: 'apps' }"
-        >
-          <sidebar-item
-            :link="{ name: 'وصفتت', path: '/components/buttons' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: 'نظام الشبكةو', path: '/components/grid-system' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: 'لوحات', path: '/components/panels' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: 'التنبيه الحلو', path: '/components/sweet-alert' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: 'إخطارات', path: '/components/notifications' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: 'الرموز', path: '/components/icons' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: 'طباعة', path: '/components/typography' }"
-          ></sidebar-item>
-        </sidebar-item>
-        <sidebar-item v-else :link="{ name: 'Components', icon: 'apps' }">
-          <sidebar-item
-            :link="{ name: 'Buttons', path: '/components/buttons' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: 'Grid System', path: '/components/grid-system' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: 'Panels', path: '/components/panels' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: 'Sweet Alert', path: '/components/sweet-alert' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: 'Notifications', path: '/components/notifications' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: 'Icons', path: '/components/icons' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: 'Typography', path: '/components/typography' }"
-          ></sidebar-item>
-          <sidebar-item :link="{ name: 'MultiLevel', disableCollapse: true }">
-            <sidebar-item :link="{ name: 'Third level menu', path: '#!' }" />
-            <sidebar-item :link="{ name: 'Just another link', path: '#a' }" />
-            <sidebar-item :link="{ name: 'One last link', path: '#b' }" />
-          </sidebar-item>
-        </sidebar-item>
-        <sidebar-item
-          v-if="$route.meta.rtlActive"
-          :link="{ name: 'إستمارات', icon: 'content_paste' }"
-        >
-          <sidebar-item
-            :link="{ name: 'أشكال منتظمة', path: '/forms/regular' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: 'أشكال موسعة', path: '/forms/extended' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: 'نماذج التحقق', path: '/forms/validation' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: 'ساحر', path: '/forms/wizard' }"
-          ></sidebar-item>
-        </sidebar-item>
-        <sidebar-item v-else :link="{ name: 'Forms', icon: 'content_paste' }">
-          <sidebar-item
-            :link="{ name: 'Regular Forms', path: '/forms/regular' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: 'Extended Forms', path: '/forms/extended' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: 'Validation Forms', path: '/forms/validation' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: 'Wizard', path: '/forms/wizard' }"
-          ></sidebar-item>
-        </sidebar-item>
-        <sidebar-item
-          v-if="$route.meta.rtlActive"
-          :link="{ name: 'الجداول', icon: 'grid_on' }"
-        >
-          <sidebar-item
-            :link="{ name: 'الجداول العادية', path: '/table-list/regular' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: 'الجداول الموسعة', path: '/table-list/extended' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{
-              name: 'جداول البيانات صافي',
-              path: '/table-list/paginated',
-            }"
-          ></sidebar-item>
-        </sidebar-item>
-        <sidebar-item v-else :link="{ name: 'Tables', icon: 'grid_on' }">
-          <sidebar-item
-            :link="{ name: 'Regular Tables', path: '/table-list/regular' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: 'Extended Tables', path: '/table-list/extended' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: 'Paginated Tables', path: '/table-list/paginated' }"
-          ></sidebar-item>
-        </sidebar-item>
-        <sidebar-item
-          v-if="$route.meta.rtlActive"
-          :link="{ name: 'خرائط', icon: 'place' }"
-        >
-          <sidebar-item
-            :link="{ name: 'خرائط جوجل', path: '/maps/google' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: 'خريطة كاملة الشاشة', path: '/maps/full-screen' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: 'سهم التوجيه، الخريطة', path: '/maps/vector-map' }"
-          ></sidebar-item>
-        </sidebar-item>
-        <sidebar-item v-else :link="{ name: 'Maps', icon: 'place' }">
-          <sidebar-item
-            :link="{ name: 'Google Maps', path: '/maps/google' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: 'Full Screen Maps', path: '/maps/full-screen' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: 'Vector Maps', path: '/maps/vector-map' }"
-          ></sidebar-item>
-        </sidebar-item>
-        <sidebar-item
-          v-if="$route.meta.rtlActive"
-          :link="{ name: 'الحاجيات', icon: 'widgets', path: '/widgets' }"
-        ></sidebar-item>
-        <sidebar-item
-          v-else
-          :link="{ name: 'Widgets', icon: 'widgets', path: '/widgets' }"
-        ></sidebar-item>
-        <sidebar-item
-          v-if="$route.meta.rtlActive"
-          :link="{ name: 'الرسوم البيانية', icon: 'timeline', path: '/charts' }"
-        ></sidebar-item>
-        <sidebar-item
-          v-else
-          :link="{ name: 'Charts', icon: 'timeline', path: '/charts' }"
-        ></sidebar-item>
-        <sidebar-item
-          v-if="$route.meta.rtlActive"
-          :link="{ name: 'التقويم', icon: 'date_range', path: '/calendar' }"
-        ></sidebar-item>
-        <sidebar-item
-          v-else
-          :link="{ name: 'Calendar', icon: 'date_range', path: '/calendar' }"
+          :link="{ name: 'Logout', icon: 'logout', path: '/calendar' }"
         ></sidebar-item>
       </template>
     </side-bar>

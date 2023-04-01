@@ -67,7 +67,7 @@ export default {
   props: {
     title: {
       type: String,
-      default: "Vue MD PRO",
+      default: "CMP",
     },
     rtlTitle: {
       type: String,
