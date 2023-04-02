@@ -1,22 +1,23 @@
-FROM node:12-alpine as builder
-
-RUN apk --no-cache add g++ make python2
+FROM node:19-alpine as builder
 
 WORKDIR /cmp-front-user
 
-# Copy the package.json and install dependencies
-COPY package*.json ./
-RUN npm install
+ENV NODE_OPTIONS="--openssl-legacy-provider"
 
 COPY . .
 
+# install project dependencies
+RUN npm install -g npm@latest
+RUN npm install --production
+
+# Build the app for production
 RUN npm run build
 
 # The rest of the code is in Production Mode
 
 FROM nginx:alpine as production-build
 
-COPY ./data/nginx /etc/nginx/conf.d
+COPY ./data/nginx/nginx.prod.conf /etc/nginx/conf.d
 COPY ./data/certs /etc/nginx/certs:ro
 
 # ## Remove default nginx index page
