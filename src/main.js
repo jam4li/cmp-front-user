@@ -19,23 +19,21 @@ import DashboardPlugin from "./material-dashboard";
 import App from "./App.vue";
 import Chartist from "chartist";
 
+import VueAwesomeSwiper from "vue-awesome-swiper";
+import "swiper/swiper-bundle.min.css";
+
 // router setup
 import routes from "./routes/routes";
 
 // plugin setup
 Vue.use(VueRouter);
 Vue.use(DashboardPlugin);
+Vue.use(VueAwesomeSwiper);
 
 // configure router
 const router = new VueRouter({
+  mode: "history",
   routes, // short for routes: routes
-  scrollBehavior: (to) => {
-    if (to.hash) {
-      return { selector: to.hash };
-    } else {
-      return { x: 0, y: 0 };
-    }
-  },
   linkExactActiveClass: "nav-item active",
 });
 

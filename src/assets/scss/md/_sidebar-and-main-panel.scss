@@ -609,6 +609,15 @@
     margin-bottom: 0;
   }
 
+  .swiper-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    border-radius: 20px;
+    text-align: center;
+  }
+
   .header {
     margin: 0 10px 30px;
 
