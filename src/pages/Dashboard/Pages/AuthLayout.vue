@@ -1,51 +1,5 @@
 <template>
   <div class="full-page" :class="{ 'nav-open': $sidebar.showSidebar }">
-    <md-toolbar md-elevation="0" class="md-transparent md-toolbar-absolute">
-      <div class="md-toolbar-row md-offset">
-        <div class="md-toolbar-section-start">
-          <h3 class="md-title">{{ $route.name }}</h3>
-        </div>
-        <div class="md-toolbar-section-end">
-          <md-button
-            class="md-just-icon md-simple md-round md-toolbar-toggle"
-            :class="{ toggled: $sidebar.showSidebar }"
-            @click="toggleSidebar"
-          >
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </md-button>
-
-          <div
-            class="md-collapse"
-            :class="{ 'off-canvas-sidebar': responsive }"
-          >
-            <md-list>
-              <md-list-item href="/">
-                <md-icon>dashboard</md-icon>
-                Dashboard
-              </md-list-item>
-              <md-list-item href="#/pricing" @click="linkClick">
-                <md-icon>attach_money</md-icon>
-                Pricing
-              </md-list-item>
-              <md-list-item href="#/register" @click="linkClick">
-                <md-icon>person_add</md-icon>
-                Register
-              </md-list-item>
-              <md-list-item href="#/login" @click="linkClick">
-                <md-icon>fingerprint</md-icon>
-                login
-              </md-list-item>
-              <md-list-item href="#/lock" @click="linkClick">
-                <md-icon>lock_open</md-icon>
-                lock
-              </md-list-item>
-            </md-list>
-          </div>
-        </div>
-      </div>
-    </md-toolbar>
     <div class="wrapper wrapper-full-page" @click="toggleSidebarPage">
       <div
         class="page-header header-filter"
@@ -63,29 +17,11 @@
         </div>
         <footer class="footer">
           <div class="container md-offset">
-            <nav>
-              <ul>
-                <li>
-                  <router-link :to="{ path: '/dashboard' }">Home</router-link>
-                </li>
-                <li>
-                  <a href="#"> Company </a>
-                </li>
-                <li>
-                  <a href="#"> Portfolio </a>
-                </li>
-                <li>
-                  <a href="#"> Blog </a>
-                </li>
-              </ul>
-            </nav>
             <div class="copyright text-center">
               &copy; {{ new Date().getFullYear() }}
-              <a
-                href="https://www.creative-tim.com/?ref=mdf-vuejs"
-                target="_blank"
-                >Creative Tim</a
-              >, made with <i class="fa fa-heart heart"></i> for a better web
+              <a href="https://cloudminepro.com/" target="_blank"
+                >CloudMine Pro.</a
+              >All Rights Reserved
             </div>
           </div>
         </footer>
@@ -124,7 +60,7 @@ export default {
     setBgImage() {
       let images = {
         Pricing: "./img/bg-pricing.jpg",
-        Login: "./img/login.jpg",
+        Login: "./img/lock.jpg",
         Register: "./img/register.jpg",
         Lock: "./img/lock.jpg",
       };

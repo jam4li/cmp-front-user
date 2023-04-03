@@ -138,39 +138,6 @@
   }
 }
 
-.login-page {
-  .md-card-login {
-    max-width: 340px;
-    margin: 0 auto;
-    @include transform-translate-y(0);
-    @extend .animation-transition-general;
-
-    &.md-card-hidden {
-      opacity: 0;
-      @include transform-translate-y(-60px);
-    }
-
-    .md-card-header {
-      margin-top: -40px;
-      margin-bottom: 20px;
-    }
-
-    .social-line .btn {
-      margin-left: 5px;
-      margin-right: 5px;
-    }
-
-    &.md-card-hidden {
-      opacity: 0;
-      @include transform-translate-y(-60px);
-    }
-  }
-
-  &.page-header > .container {
-    padding: 0;
-  }
-}
-
 .lock-page {
   .md-card-profile {
     width: 240px;
@@ -213,13 +180,13 @@
   }
 }
 
-.register-page {
+.login-page {
   .md-card-signup {
     border-radius: $border-radius-base * 2;
     @include shadow-16dp();
     margin-bottom: 100px;
     padding: 40px 0px;
-    margin-top: 15vh;
+    margin-top: 5vh;
     max-width: 920px;
     margin-left: auto;
     margin-right: auto;
@@ -249,6 +216,13 @@
       .button-container {
         text-align: center;
       }
+    }
+
+    .scrollable-section {
+      height: 250px; /* Set the desired height of the scrollable section */
+      overflow: auto; /* Enable scrolling */
+      background-color: #eeeeee;
+      border-radius: 6px;
     }
 
     .info-horizontal {

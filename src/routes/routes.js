@@ -10,7 +10,6 @@ import Pricing from "@/pages/Dashboard/Pages/Pricing.vue";
 import TimeLine from "@/pages/Dashboard/Pages/TimeLinePage.vue";
 import RtlSupport from "@/pages/Dashboard/Pages/RtlSupport.vue";
 import Login from "@/pages/Dashboard/Pages/Login.vue";
-import Register from "@/pages/Dashboard/Pages/Register.vue";
 import Lock from "@/pages/Dashboard/Pages/Lock.vue";
 import Package from "@/pages/Dashboard/Pages/Package.vue";
 
@@ -206,11 +205,6 @@ let authPages = {
       path: "/login",
       name: "Login",
       component: Login,
-    },
-    {
-      path: "/register",
-      name: "Register",
-      component: Register,
     },
     {
       path: "/pricing",
