@@ -12,6 +12,7 @@ import RtlSupport from "@/pages/Dashboard/Pages/RtlSupport.vue";
 import Login from "@/pages/Dashboard/Pages/Login.vue";
 import Register from "@/pages/Dashboard/Pages/Register.vue";
 import Lock from "@/pages/Dashboard/Pages/Lock.vue";
+import Package from "@/pages/Dashboard/Pages/Package.vue";
 
 // Components pages
 import Buttons from "@/pages/Dashboard/Components/Buttons.vue";
@@ -259,6 +260,11 @@ const routes = [
         path: "widgets",
         name: "Widgets",
         components: { default: Widgets },
+      },
+      {
+        path: "package",
+        name: "Package",
+        components: { default: Package },
       },
     ],
   },
