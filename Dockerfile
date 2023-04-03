@@ -8,7 +8,7 @@ COPY . .
 
 # install project dependencies
 RUN npm install -g npm@latest
-RUN npm install --production
+RUN npm install
 
 # Build the app for production
 RUN npm run build
@@ -17,8 +17,9 @@ RUN npm run build
 
 FROM nginx:alpine as production-build
 
-COPY ./data/nginx/nginx.prod.conf /etc/nginx/conf.d
-COPY ./data/certs /etc/nginx/certs:ro
+COPY ./data/nginx/nginx.prod.conf /etc/nginx/conf.d/default.conf
+COPY ./data/certs/cloudminepro.crt /etc/nginx/certs/
+COPY ./data/certs/cloudminepro.key /etc/nginx/certs/
 
 # ## Remove default nginx index page
 RUN rm -rf /usr/share/nginx/html/*
