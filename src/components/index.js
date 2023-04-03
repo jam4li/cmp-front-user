@@ -6,7 +6,7 @@ import DropDown from "./Dropdown.vue";
 import Modal from "./Modal.vue";
 
 // Tables
-import GlobalSalesTable from "./Tables/GlobalSalesTable.vue";
+import AnnouncementTable from "./Tables/AnnouncementTable.vue";
 
 import PricingCard from "./Cards/PricingCard.vue";
 import SignupCard from "./Cards/SignupCard.vue";
@@ -15,7 +15,7 @@ import LoginCard from "./Cards/LoginCard.vue";
 import StatsCard from "./Cards/StatsCard.vue";
 import ChartCard from "./Cards/ChartCard.vue";
 import TestimonialCard from "./Cards/TestimonialCard.vue";
-import GlobalSalesCard from "./Cards/GlobalSalesCard.vue";
+import AnnouncementCard from "./Cards/AnnouncementCard.vue";
 import NavTabsCard from "./Cards/NavTabsCard.vue";
 import ProductCard from "./Cards/ProductCard.vue";
 
@@ -39,7 +39,7 @@ export {
   Badge,
   Modal,
   Pagination,
-  GlobalSalesTable,
+  AnnouncementTable,
   LockCard,
   PricingCard,
   SignupCard,
@@ -47,7 +47,7 @@ export {
   StatsCard,
   LoginCard,
   ChartCard,
-  GlobalSalesCard,
+  AnnouncementCard,
   NavTabsCard,
   ProductCard,
   DropDown,
