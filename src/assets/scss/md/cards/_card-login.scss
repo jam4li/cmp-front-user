@@ -1,34 +1,34 @@
-.md-card-login{
+.md-card-login {
   max-width: 340px;
   margin: 0 auto;
 
-  .md-button{
-    margin: .3125rem 1px;
+  .md-button {
+    margin: 0.3125rem 1px;
   }
 
   .md-card-header,
-  .description{
+  .description {
     text-align: center;
   }
 
-  &.md-card-hidden{
+  &.md-card-hidden {
     opacity: 0;
-    transform: translate3d(0,-60px,0);
+    transform: translate3d(0, -60px, 0);
   }
 
-  .md-card-header{
+  .md-card-header {
     margin-bottom: 20px;
   }
 
-  .md-card-content{
+  .md-card-content {
     padding-top: 0;
   }
 
-  .description{
+  .description {
     margin-top: 0;
   }
 
-  .md-card-actions{
+  .md-card-actions {
     border: 0;
     justify-content: center;
   }

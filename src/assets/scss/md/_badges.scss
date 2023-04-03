@@ -14,7 +14,6 @@
   @include badge-color();
 }
 
-
 .badge-default[href]:hover,
 .badge-default[href]:focus {
   background-color: darken($gray-light, 5%);

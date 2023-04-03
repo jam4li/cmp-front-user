@@ -1,16 +1,16 @@
-.md-card-profile{
+.md-card-profile {
   @extend %common-card-testimonial;
 }
 
-.md-card-profile{
-  .md-card-actions{
+.md-card-profile {
+  .md-card-actions {
     border: 0;
   }
 
-  .title{
+  .title {
     color: $black-color;
   }
-  .md-card-header:not([class*="card-header-"]){
+  .md-card-header:not([class*="card-header-"]) {
     background: transparent;
   }
   .md-card-avatar {
@@ -18,7 +18,7 @@
     max-height: 130px;
   }
 
-  .md-button{
+  .md-button {
     margin: 5px 1px;
   }
 }

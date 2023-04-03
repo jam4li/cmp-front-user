@@ -1,6 +1,6 @@
 .md-select-menu {
   .md-list-item {
-    margin: 0 .3125rem;
+    margin: 0 0.3125rem;
     border-radius: $border-radius-small;
 
     &:not(:last-child) {
@@ -15,7 +15,7 @@
       &:hover {
         background-color: $brand-primary !important;
         @include shadow-big-color($brand-primary);
-        color: #FFF !important;
+        color: #fff !important;
       }
     }
 
@@ -38,25 +38,24 @@
     @include shadow-big-color($brand-primary);
 
     .md-list-item-content {
-      color: #FFF !important;
+      color: #fff !important;
     }
   }
 
-  .md-list-item-content>.md-checkbox:first-child,
-  .md-list-item-content>.md-radio:first-child {
+  .md-list-item-content > .md-checkbox:first-child,
+  .md-list-item-content > .md-radio:first-child {
     margin: 0;
     margin-left: auto;
   }
 
-  .md-checkbox.md-checked
-  .md-checkbox-container:after {
+  .md-checkbox.md-checked .md-checkbox-container:after {
     border-color: $white-color !important;
   }
 
   .md-checkbox .md-checkbox-container {
     border-color: transparent !important;
 
-    .md-ripple{
+    .md-ripple {
       overflow: visible;
     }
   }

@@ -8,7 +8,7 @@
   .md-ripple {
     font-weight: 500;
     text-transform: uppercase;
-    font-size: .80em;
+    font-size: 0.8em;
     padding: 0 12px !important;
     -webkit-transition: all 150ms ease 0s;
     -moz-transition: all 150ms ease 0s;
@@ -26,7 +26,7 @@
       opacity: 1;
     }
 
-    .md-input-action{
+    .md-input-action {
       background-color: transparent !important;
     }
   }
@@ -49,27 +49,27 @@
 }
 
 .md-chips:before,
-.md-chips:after{
+.md-chips:after {
   display: none;
 }
 
-.md-chips{
-  &.md-primary .md-chip{
+.md-chips {
+  &.md-primary .md-chip {
     background-color: $brand-primary !important;
   }
-  &.md-info .md-chip{
+  &.md-info .md-chip {
     background-color: $brand-info !important;
   }
-  &.md-warning .md-chip{
+  &.md-warning .md-chip {
     background-color: $brand-warning !important;
   }
-  &.md-rose .md-chip{
+  &.md-rose .md-chip {
     background-color: $brand-rose !important;
   }
-  &.md-danger .md-chip{
+  &.md-danger .md-chip {
     background-color: $brand-danger !important;
   }
-  &.md-success .md-chip{
+  &.md-success .md-chip {
     background-color: $brand-success !important;
   }
 }
