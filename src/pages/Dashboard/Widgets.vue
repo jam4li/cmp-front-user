@@ -106,59 +106,6 @@
     <div
       class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-50"
     >
-      <div class="md-layout">
-        <div class="md-layout-item">
-          <pricing-card icon-color="icon-success">
-            <h6 slot="category" class="category">Small Company</h6>
-            <md-icon slot="icon">home</md-icon>
-            <h3 slot="title" class="title">29$</h3>
-            <p slot="description" class="card-description">
-              This is good if your company size is between 2 and 10 Persons.
-            </p>
-            <md-button slot="footer" class="md-success md-round"
-              >Choose Plan</md-button
-            >
-          </pricing-card>
-        </div>
-        <div class="md-layout-item">
-          <pricing-card card-class="md-card-plain" icon-color="icon-black">
-            <h6 slot="category" class="category">Freelancer</h6>
-            <md-icon slot="icon">weekend</md-icon>
-            <h3 slot="title" class="title black-color">FREE</h3>
-            <p slot="description" class="card-description">
-              This is good if your company size is between 2 and 10 Persons.
-            </p>
-            <md-button slot="footer" class="md-white md-round"
-              >Choose Plan</md-button
-            >
-          </pricing-card>
-        </div>
-        <div class="md-layout-item md-size-90">
-          <testimonial-card>
-            <template slot="header-icon">format_quote</template>
-            <template slot="content">
-              <h5 class="description">
-                Your products, all the kits that I have downloaded from your
-                site and worked with are sooo cool! I love the color mixtures,
-                cards... everything. Keep up the great work!
-              </h5>
-            </template>
-            <template slot="footer">
-              <h4 class="title">Alec Thompson</h4>
-              <h6 class="category">@alecthompson</h6>
-              <div class="avatar">
-                <a href="#pablo">
-                  <img class="img" :src="profileCard" />
-                </a>
-              </div>
-            </template>
-          </testimonial-card>
-        </div>
-      </div>
-    </div>
-    <div
-      class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-50"
-    >
       <time-line plain type="simple">
         <time-line-item inverted badge-type="danger" badge-icon="card_travel">
           <span slot="header" class="badge badge-danger">Some title</span>
@@ -228,21 +175,13 @@
 </template>
 
 <script>
-import {
-  NavTabsCard,
-  TimeLine,
-  TimeLineItem,
-  PricingCard,
-  TestimonialCard,
-} from "@/components";
+import { NavTabsCard, TimeLine, TimeLineItem } from "@/components";
 
 export default {
   components: {
     NavTabsCard,
-    PricingCard,
     TimeLine,
     TimeLineItem,
-    TestimonialCard,
   },
   props: {
     profileCard: {

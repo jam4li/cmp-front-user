@@ -59,10 +59,7 @@ export default {
   computed: {
     setBgImage() {
       let images = {
-        Pricing: "./img/bg-pricing.jpg",
         Login: "./img/lock.jpg",
-        Register: "./img/register.jpg",
-        Lock: "./img/lock.jpg",
       };
       return {
         backgroundImage: `url(${images[this.$route.name]})`,
