@@ -21,6 +21,14 @@
             :link="{ name: 'Network Accounting', path: '/pages/rtl' }"
           ></sidebar-item>
         </sidebar-item>
+        <sidebar-item :link="{ name: 'ACCOUNTING', icon: 'paid' }">
+          <sidebar-item
+            :link="{ name: 'Withdraw', path: '/withdraw' }"
+          ></sidebar-item>
+          <sidebar-item
+            :link="{ name: 'Transaction', path: '/transaction' }"
+          ></sidebar-item>
+        </sidebar-item>
         <sidebar-item :link="{ name: 'Company', icon: 'apartment' }">
           <sidebar-item
             :link="{ name: 'Roadmap', path: '/pages/timeline' }"
@@ -31,22 +39,10 @@
         >
         </sidebar-item>
         <sidebar-item
-          :link="{ name: 'Withdraw', icon: 'paid', path: '/withdraw' }"
-        >
-        </sidebar-item>
-        <sidebar-item
           :link="{
             name: 'Support',
             icon: 'contact_support',
             path: '/support',
-          }"
-        >
-        </sidebar-item>
-        <sidebar-item
-          :link="{
-            name: 'Transaction',
-            icon: 'receipt_long',
-            path: '/transaction',
           }"
         >
         </sidebar-item>

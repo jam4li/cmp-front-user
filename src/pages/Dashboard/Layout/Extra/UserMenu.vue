@@ -71,11 +71,7 @@ export default {
   props: {
     title: {
       type: String,
-      default: "Tania Andrew",
-    },
-    rtlTitle: {
-      type: String,
-      default: "تانيا أندرو",
+      default: "Iman Saffari",
     },
     avatar: {
       type: String,
