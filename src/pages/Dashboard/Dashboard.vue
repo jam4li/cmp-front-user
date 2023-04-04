@@ -7,7 +7,11 @@
             <md-icon>shopping_cart</md-icon>
           </div>
           <p class="category">Active Packages</p>
-          <h3 class="title"><animated-number :value="3"></animated-number></h3>
+          <h3 class="title">
+            <animated-number
+              :value="userInfo.active_packages"
+            ></animated-number>
+          </h3>
         </template>
 
         <template slot="footer">
@@ -26,9 +30,7 @@
           </div>
           <p class="category">Balance</p>
           <h3 class="title">
-            $ <animated-number :value="34"></animated-number>,<animated-number
-              :value="245"
-            ></animated-number>
+            $ <animated-number :value="userInfo.balance"></animated-number>
           </h3>
         </template>
 
@@ -48,7 +50,7 @@
           </div>
           <p class="category">Direct Invited</p>
           <h3 class="title">
-            <animated-number :value="2"></animated-number>
+            <animated-number :value="userInfo.direct_invited"></animated-number>
           </h3>
         </template>
 
@@ -68,7 +70,7 @@
           </div>
           <p class="category">Your Team</p>
           <h3 class="title">
-            <animated-number :value="17"></animated-number>
+            <animated-number :value="userInfo.team"></animated-number>
           </h3>
         </template>
 
@@ -91,21 +93,18 @@
 
         <template slot="content">
           <div class="md-layout">
-            <div class="md-layout-item md-size-20">
-              <announcement-table></announcement-table>
-            </div>
-            <div class="md-layout-item md-size-80">
+            <div class="md-layout-item md-size-100">
               <div class="swiper-container">
                 <swiper :options="swiperOptions">
                   <!-- Slides -->
-                  <swiper-slide>
-                    <img src="/img/card-1.jpg" alt="Image 1" />
-                  </swiper-slide>
-                  <swiper-slide>
-                    <img src="/img/card-2.jpg" alt="Image 1" />
-                  </swiper-slide>
-                  <swiper-slide>
-                    <img src="/img/card-3.jpg" alt="Image 1" />
+                  <swiper-slide
+                    v-for="announcement in announcements"
+                    :key="announcement.id"
+                  >
+                    <div class="slide-content">
+                      <img v-bind:src="announcement.image" alt="Image 1" />
+                      <div class="slide-text">{{ announcement.title }}</div>
+                    </div>
                   </swiper-slide>
 
                   <!-- Add Pagination -->
@@ -121,22 +120,20 @@
 </template>
 
 <script>
-import {
-  StatsCard,
-  AnimatedNumber,
-  AnnouncementCard,
-  AnnouncementTable,
-} from "@/components";
+import api from "@/api.js";
+
+import { StatsCard, AnimatedNumber, AnnouncementCard } from "@/components";
 
 export default {
   components: {
     StatsCard,
     AnimatedNumber,
     AnnouncementCard,
-    AnnouncementTable,
   },
   data() {
     return {
+      userInfo: null,
+      announcements: [],
       swiperOptions: {
         slidesPerView: 1,
         spaceBetween: 30,
@@ -146,6 +143,28 @@ export default {
         },
       },
     };
+  },
+  created() {
+    this.fetchAnnouncements();
+    this.fetchUserInfo();
+  },
+  methods: {
+    async fetchAnnouncements() {
+      try {
+        const response = await api.get("/110c2c28-811b-4899-8e2d-be095e1537ca"); // Replace with your API endpoint
+        this.announcements = response.data;
+      } catch (error) {
+        console.error("Error fetching posts:", error);
+      }
+    },
+    async fetchUserInfo() {
+      try {
+        const response = await api.get("/863244aa-c287-4008-aa83-1bf71da71b08"); // Replace with your API endpoint
+        this.userInfo = response.data;
+      } catch (error) {
+        console.error("Error fetching posts:", error);
+      }
+    },
   },
 };
 </script>

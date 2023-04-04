@@ -15,7 +15,7 @@
           <b class="caret"></b>
         </span>
         <span v-else>
-          {{ title }}
+          {{ data.name }}
           <b class="caret"></b>
         </span>
       </a>
@@ -64,26 +64,30 @@
 <script>
 import { CollapseTransition } from "vue2-transitions";
 
+import api from "@/api.js";
+
 export default {
   components: {
     CollapseTransition,
   },
-  props: {
-    title: {
-      type: String,
-      default: "Iman Saffari",
-    },
-    avatar: {
-      type: String,
-      default: "./img/faces/avatar.jpg",
-    },
-  },
   data() {
     return {
       isClosed: true,
+      data: {},
     };
   },
+  created() {
+    this.fetchData();
+  },
   methods: {
+    async fetchData() {
+      try {
+        const response = await api.get("/db95a7c7-b0f7-4521-ba84-571e796dcf5e"); // Replace with your API endpoint
+        this.data = response.data;
+      } catch (error) {
+        console.error("Error fetching posts:", error);
+      }
+    },
     clicked: function (e) {
       e.preventDefault();
     },
