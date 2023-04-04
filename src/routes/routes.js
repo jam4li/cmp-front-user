@@ -1,3 +1,7 @@
+import Vue from "vue";
+import Cookies from "js-cookie";
+import Router from "vue-router";
+
 import DashboardLayout from "@/pages/Dashboard/Layout/DashboardLayout.vue";
 import AuthLayout from "@/pages/Dashboard/Pages/AuthLayout.vue";
 
@@ -40,6 +44,8 @@ import Calendar from "@/pages/Dashboard/Calendar.vue";
 // Charts
 import Charts from "@/pages/Dashboard/Charts.vue";
 import Widgets from "@/pages/Dashboard/Widgets.vue";
+
+Vue.use(Router);
 
 let componentsMenu = {
   path: "/components",
@@ -203,13 +209,8 @@ const routes = [
     path: "/",
     redirect: "/dashboard",
     name: "Home",
+    meta: { requiresAuth: true },
   },
-  componentsMenu,
-  formsMenu,
-  tablesMenu,
-  mapsMenu,
-  pagesMenu,
-  authPages,
   {
     path: "/",
     component: DashboardLayout,
@@ -218,6 +219,7 @@ const routes = [
         path: "dashboard",
         name: "Dashboard",
         components: { default: Dashboard },
+        meta: { requiresAuth: true },
       },
       {
         path: "calendar",
@@ -238,9 +240,34 @@ const routes = [
         path: "package",
         name: "Package",
         components: { default: Package },
+        meta: { requiresAuth: true },
       },
     ],
   },
 ];
 
-export default routes;
+const router = new Router({
+  mode: "history",
+  routes,
+  linkExactActiveClass: "nav-item active",
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
+    const token = Cookies.get("authToken");
+    if (token) {
+      console.log("Token is saved in the cookie:", token);
+      next();
+    } else {
+      console.log("Token is not saved in the cookie:");
+      const urlParams = new URLSearchParams(window.location.search);
+      const new_token = urlParams.get("token");
+      Cookies.set("authToken", new_token, { expires: 1 });
+      next();
+    }
+  } else {
+    next();
+  }
+});
+
+export default router;

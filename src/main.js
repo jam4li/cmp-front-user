@@ -23,19 +23,12 @@ import VueAwesomeSwiper from "vue-awesome-swiper";
 import "swiper/swiper-bundle.min.css";
 
 // router setup
-import routes from "./routes/routes";
+import router from "./routes/routes";
 
 // plugin setup
 Vue.use(VueRouter);
 Vue.use(DashboardPlugin);
 Vue.use(VueAwesomeSwiper);
-
-// configure router
-const router = new VueRouter({
-  mode: "history",
-  routes, // short for routes: routes
-  linkExactActiveClass: "nav-item active",
-});
 
 // global library setup
 Vue.prototype.$Chartist = Chartist;
