@@ -25,7 +25,7 @@
             </div>
           </div>
           <md-checkbox v-model="boolean"
-            >I agree to the <a>terms and conditions</a>.</md-checkbox
+            >I agree to the <a>Terms And Conditions</a>.</md-checkbox
           >
           <div class="button-container">
             <md-button href class="md-success md-round mt-4" slot="footer"
@@ -51,7 +51,7 @@ export default {
       password: null,
       contentLeft: [
         {
-          colorIcon: "icon-success",
+          colorIcon: "icon-info",
           icon: "feed",
           title: "01. General Sentences",
           description:
@@ -74,42 +74,42 @@ export default {
             "3.1 The investor, in filling in the registration form, is personally responsible for the accuracy of the information provided and if the information is incorrect, it is the investor's responsibility. 3.2 The investor is obliged to check each transaction in its financial account. If any uncertainty or disagreement is identified, the investor can request support from cloudminepro support. 3.3 All services provided by the Company are used solely for the purpose of investing by the investor. 3.4 The Investor agrees to the processing of personal information in accordance with the provisions of the law.",
         },
         {
-          colorIcon: "icon-warning",
+          colorIcon: "icon-info",
           icon: "emergency",
           title: "04. Risk Reduction",
           description:
             "4.1 The Company minimizes the risks of conducting operations in the foreign exchange market. In addition, the risks associated with using an Internet-based trading transaction system include risks associated with possible hardware or software failures.",
         },
         {
-          colorIcon: "icon-warning",
+          colorIcon: "icon-info",
           icon: "copyright",
           title: "05. Copyright Notice",
           description:
             "5.1. The cloudminepro.com website (www.cloudminepro.com), all hosted information and services are proprietary to the company and are protected by copyright. 5.2 An investor will be prosecuted for copyright infringement (damaging the website, copying content, etc.). His account will be frozen with funds in his personal account.",
         },
         {
-          colorIcon: "icon-warning",
+          colorIcon: "icon-info",
           icon: "block",
           title: "06. Indescribable Resistance Cycles",
           description:
             "6.1. Important note: For the duration of the indivisible force conditions (changes in laws, disasters, military status, etc.); the Company has the right to suspend its operations indefinitely. Such conditions cannot be affected by the company and the investor. 6.2. The circumstances of inseparable force imply the impossibility to carry out any transactions and financial transactions in standard mode.",
         },
         {
-          colorIcon: "icon-primary",
+          colorIcon: "icon-info",
           icon: "post_add",
           title: "07. Introduction of amendments and additions",
           description:
             "7.1. Applicable rules and the terms of the agreement can be reviewed by the project administration. 7.2. The administration has the right to make changes and additions at any time. Additions and changes are published in this section and shall take effect immediately after their announcement. 7.3. In order to be aware of possible changes, we encourage you to periodically review this section.",
         },
         {
-          colorIcon: "icon-primary",
+          colorIcon: "icon-info",
           icon: "cancel",
           title: "08. Termination of the cooperation",
           description:
             "8.1. Termination of the cooperation between the Company and the Investor may be initiated by either side. 8.2. The Company has the right to unilaterally terminate the cooperation with the Investor in case of violation of terms and conditions of the agreement. 8.3. The Investor can terminate the agreement if they decide to cease their investment activities in the Company.",
         },
         {
-          colorIcon: "icon-primary",
+          colorIcon: "icon-info",
           icon: "forum",
           title: "09. The scheme of arrangement",
           description:

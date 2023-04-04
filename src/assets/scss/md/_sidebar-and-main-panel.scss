@@ -614,7 +614,28 @@
     width: 100%;
     height: auto;
     overflow: hidden;
+    border: 5px #eeeeee solid;
     border-radius: 20px;
+    text-align: center;
+  }
+
+  .swiper-container .slide-content {
+    position: relative;
+  }
+
+  .swiper-container .slide-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px; /* Adjust the padding as needed */
+    background-color: rgba(
+      0,
+      0,
+      0,
+      0.5
+    ); /* Add a background color with transparency */
+    color: #fff; /* Set the text color */
     text-align: center;
   }
 
