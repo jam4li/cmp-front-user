@@ -28,7 +28,10 @@
             >I agree to the <a>Terms And Conditions</a>.</md-checkbox
           >
           <div class="button-container">
-            <md-button href class="md-success md-round mt-4" slot="footer"
+            <md-button
+              class="md-success md-round mt-4"
+              slot="footer"
+              @click="redirectToGmailLogin"
               >Get Started</md-button
             >
           </div>
@@ -38,17 +41,28 @@
   </div>
 </template>
 <script>
+import api from "@/api.js";
 import { SignupCard } from "@/components";
+
 export default {
   components: {
     SignupCard,
   },
+  methods: {
+    redirectToGmailLogin() {
+      api
+        .get("/auth/google-url")
+        .then((response) => {
+          window.location.href = response.data.url;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+  },
   data() {
     return {
-      firstname: null,
       boolean: false,
-      email: null,
-      password: null,
       contentLeft: [
         {
           colorIcon: "icon-info",

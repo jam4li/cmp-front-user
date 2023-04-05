@@ -1,9 +1,14 @@
 // api.js
 import axios from "axios";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const instance = axios.create({
-  baseURL: "https://mocki.io/v1", // Replace with your API base URL
-  timeout: 5000, // Set a timeout for the requests
+  baseURL: process.env.VUE_APP_BASE_URL,
+  withCredentials: true,
+  crossDomain: true,
+  timeout: 5000,
   headers: {
     "Content-Type": "application/json",
   },

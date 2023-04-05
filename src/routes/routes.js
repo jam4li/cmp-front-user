@@ -211,6 +211,12 @@ const routes = [
     name: "Home",
     meta: { requiresAuth: true },
   },
+  formsMenu,
+  componentsMenu,
+  tablesMenu,
+  mapsMenu,
+  pagesMenu,
+  authPages,
   {
     path: "/",
     component: DashboardLayout,
