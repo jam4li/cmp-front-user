@@ -1,5 +1,6 @@
 // api.js
 import axios from "axios";
+import Cookies from "js-cookie";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -13,5 +14,25 @@ const instance = axios.create({
     "Content-Type": "application/json",
   },
 });
+
+// Request interceptor
+instance.interceptors.request.use(
+  (config) => {
+    // Get the token from localStorage
+    const token = Cookies.get("authToken");
+
+    if (token && token.length > 0) {
+      config.headers.Authorization = `Token ${token}`;
+      console.log("Token is set");
+    } else {
+      console.log("Token is not set");
+    }
+
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 
 export default instance;

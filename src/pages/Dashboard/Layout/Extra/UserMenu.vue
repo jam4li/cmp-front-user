@@ -10,11 +10,7 @@
         @click.stop="toggleMenu"
         @click.capture="clicked"
       >
-        <span v-if="$route.meta.rtlActive">
-          {{ rtlTitle }}
-          <b class="caret"></b>
-        </span>
-        <span v-else>
+        <span>
           {{ data.name }}
           <b class="caret"></b>
         </span>
@@ -25,31 +21,19 @@
           <ul class="nav">
             <slot>
               <li>
-                <a v-if="$route.meta.rtlActive" href="#vue">
-                  <span class="sidebar-mini">مع</span>
-                  <span class="sidebar-normal">ملف</span>
-                </a>
-                <a v-else href="#vue">
+                <a href="#vue">
                   <span class="sidebar-mini">MP</span>
                   <span class="sidebar-normal">My Profile</span>
                 </a>
               </li>
               <li>
-                <a v-if="$route.meta.rtlActive" href="#vue">
-                  <span class="sidebar-mini">هوع</span>
-                  <span class="sidebar-normal">تعديل الملف الشخصي</span>
-                </a>
-                <a v-else href="#vue">
+                <a href="#vue">
                   <span class="sidebar-mini">EP</span>
                   <span class="sidebar-normal">Edit Profile</span>
                 </a>
               </li>
               <li>
-                <a v-if="$route.meta.rtlActive" href="#vue">
-                  <span class="sidebar-mini">و</span>
-                  <span class="sidebar-normal">إعدادات</span>
-                </a>
-                <a v-else href="#vue">
+                <a href="#vue">
                   <span class="sidebar-mini">S</span>
                   <span class="sidebar-normal">Settings</span>
                 </a>
@@ -82,7 +66,7 @@ export default {
   methods: {
     async fetchData() {
       try {
-        const response = await api.get("/db95a7c7-b0f7-4521-ba84-571e796dcf5e"); // Replace with your API endpoint
+        const response = await api.get("/api/v1/user/detail/"); // Replace with your API endpoint
         this.data = response.data;
       } catch (error) {
         console.error("Error fetching posts:", error);

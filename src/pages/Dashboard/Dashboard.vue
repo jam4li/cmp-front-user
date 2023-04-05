@@ -121,6 +121,7 @@
 
 <script>
 import api from "@/api.js";
+import Swal from "sweetalert2";
 
 import { StatsCard, AnimatedNumber, AnnouncementCard } from "@/components";
 
@@ -147,11 +148,12 @@ export default {
   created() {
     this.fetchAnnouncements();
     this.fetchUserInfo();
+    this.showSwial();
   },
   methods: {
     async fetchAnnouncements() {
       try {
-        const response = await api.get("/110c2c28-811b-4899-8e2d-be095e1537ca"); // Replace with your API endpoint
+        const response = await api.get("/api/v1/announcement/list/"); // Replace with your API endpoint
         this.announcements = response.data;
       } catch (error) {
         console.error("Error fetching posts:", error);
@@ -159,11 +161,25 @@ export default {
     },
     async fetchUserInfo() {
       try {
-        const response = await api.get("/863244aa-c287-4008-aa83-1bf71da71b08"); // Replace with your API endpoint
+        const response = await api.get("/api/v1/user/dashboard/"); // Replace with your API endpoint
         this.userInfo = response.data;
       } catch (error) {
         console.error("Error fetching posts:", error);
       }
+    },
+    async showSwial() {
+      Swal.fire({
+        title: "Exciting News - Completely Revamped Investor Panel",
+        buttonsStyling: false,
+        confirmButtonClass: "md-button md-success",
+        html: `<div style="text-align: left;">
+          Dear valued investors,</br>
+          We are thrilled to announce that our team has been working tirelessly to redesign and enhance the investor panel on our platform.</br>
+          During this time, access to your investor panel may be limited or unavailable. We apologize for any inconvenience this may cause and appreciate your understanding.</br></br>
+        <strong>Please rest assured that your funds are safe and secure throughout this process. We understand the importance of protecting your investments,
+        and we have taken all necessary precautions to safeguard them.</strong>
+        </div>`,
+      });
     },
   },
 };

@@ -261,7 +261,7 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
   if (to.matched.some((record) => record.meta.requiresAuth)) {
     const token = Cookies.get("authToken");
-    if (token) {
+    if (token != null && token.length > 0) {
       console.log("Token is saved in the cookie:", token);
       next();
     } else {

@@ -51,7 +51,7 @@ export default {
   methods: {
     redirectToGmailLogin() {
       api
-        .get("/auth/google-url")
+        .get("/api/v1/auth/google-url")
         .then((response) => {
           window.location.href = response.data.url;
         })
