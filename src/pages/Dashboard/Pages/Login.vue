@@ -43,7 +43,7 @@
 <script>
 import api from "@/api.js";
 import { SignupCard } from "@/components";
-import api from "@/logger.js";
+import logger from "@/logger.js";
 
 export default {
   components: {

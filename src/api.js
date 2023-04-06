@@ -2,7 +2,7 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 import dotenv from "dotenv";
-import api from "@/logger.js";
+import logger from "@/logger.js";
 
 dotenv.config();
 

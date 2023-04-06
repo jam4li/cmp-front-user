@@ -121,7 +121,7 @@
 
 <script>
 import api from "@/api.js";
-import api from "@/logger.js";
+import logger from "@/logger.js";
 import Swal from "sweetalert2";
 
 import { StatsCard, AnimatedNumber, AnnouncementCard } from "@/components";

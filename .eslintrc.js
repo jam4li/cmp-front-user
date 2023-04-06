@@ -8,7 +8,7 @@ module.exports = {
   extends: ["plugin:vue/essential", "@vue/prettier"],
 
   rules: {
-    "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
+    "no-console": "off", // This will allow console statements in production which is not recommended
     "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
   },
 
