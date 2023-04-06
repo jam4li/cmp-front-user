@@ -43,6 +43,7 @@
 <script>
 import api from "@/api.js";
 import { SignupCard } from "@/components";
+import api from "@/logger.js";
 
 export default {
   components: {
@@ -56,7 +57,7 @@ export default {
           window.location.href = response.data.url;
         })
         .catch((error) => {
-          console.log(error);
+          logger.log(error);
         });
     },
   },

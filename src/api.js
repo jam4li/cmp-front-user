@@ -2,6 +2,7 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 import dotenv from "dotenv";
+import api from "@/logger.js";
 
 dotenv.config();
 
@@ -23,9 +24,9 @@ instance.interceptors.request.use(
 
     if (token && token.length > 0) {
       config.headers.Authorization = `Token ${token}`;
-      console.log("Token is set");
+      logger.log("Token is set");
     } else {
-      console.log("Token is not set");
+      logger.log("Token is not set");
     }
 
     return config;

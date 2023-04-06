@@ -121,6 +121,7 @@
 
 <script>
 import api from "@/api.js";
+import api from "@/logger.js";
 import Swal from "sweetalert2";
 
 import { StatsCard, AnimatedNumber, AnnouncementCard } from "@/components";
@@ -156,7 +157,7 @@ export default {
         const response = await api.get("/api/v1/announcement/list/"); // Replace with your API endpoint
         this.announcements = response.data;
       } catch (error) {
-        console.error("Error fetching posts:", error);
+        logger.error("Error fetching posts:", error);
       }
     },
     async fetchUserInfo() {
@@ -164,7 +165,7 @@ export default {
         const response = await api.get("/api/v1/user/dashboard/"); // Replace with your API endpoint
         this.userInfo = response.data;
       } catch (error) {
-        console.error("Error fetching posts:", error);
+        logger.error("Error fetching posts:", error);
       }
     },
     async showSwial() {

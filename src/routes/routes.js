@@ -262,10 +262,10 @@ router.beforeEach((to, from, next) => {
   if (to.matched.some((record) => record.meta.requiresAuth)) {
     const token = Cookies.get("authToken");
     if (token != null && token.length > 0) {
-      console.log("Token is saved in the cookie:", token);
+      logger.log("Token is saved in the cookie:", token);
       next();
     } else {
-      console.log("Token is not saved in the cookie:");
+      logger.log("Token is not saved in the cookie:");
       const urlParams = new URLSearchParams(window.location.search);
       const new_token = urlParams.get("token");
       Cookies.set("authToken", new_token, { expires: 1 });
