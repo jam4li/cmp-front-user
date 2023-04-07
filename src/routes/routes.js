@@ -12,7 +12,7 @@ import Dashboard from "@/pages/Dashboard/Dashboard.vue";
 
 // Pages
 import User from "@/pages/Dashboard/Pages/UserProfile.vue";
-import TimeLine from "@/pages/Dashboard/Pages/TimeLinePage.vue";
+import Roadmap from "@/pages/Dashboard/Pages/Roadmap.vue";
 import Login from "@/pages/Dashboard/Pages/Login.vue";
 import Package from "@/pages/Dashboard/Pages/Package.vue";
 import PageNotFound from "@/pages/Dashboard/Pages/PageNotFound.vue";
@@ -187,9 +187,9 @@ let pagesMenu = {
       components: { default: User },
     },
     {
-      path: "timeline",
-      name: "Timeline Page",
-      components: { default: TimeLine },
+      path: "roadmap",
+      name: "Roadmap",
+      components: { default: Roadmap },
     },
   ],
 };

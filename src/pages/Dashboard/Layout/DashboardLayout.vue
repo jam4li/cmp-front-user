@@ -31,7 +31,7 @@
         </sidebar-item>
         <sidebar-item :link="{ name: 'Company', icon: 'apartment' }">
           <sidebar-item
-            :link="{ name: 'Roadmap', path: '/pages/timeline' }"
+            :link="{ name: 'Roadmap', path: '/pages/roadmap' }"
           ></sidebar-item>
         </sidebar-item>
         <sidebar-item
