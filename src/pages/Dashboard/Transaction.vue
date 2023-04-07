@@ -32,17 +32,17 @@
               </md-field>
             </md-table-toolbar>
             <md-table-row slot="md-table-row" slot-scope="{ item }">
-              <md-table-cell md-label="Type" md-sort-by="name">
-                {{ item.name }}
+              <md-table-cell md-label="Type" md-sort-by="type">
+                {{ item.type }}
               </md-table-cell>
-              <md-table-cell md-label="Amount" md-sort-by="email">
-                {{ item.email }}
+              <md-table-cell md-label="Amount">
+                {{ item.amount }}
               </md-table-cell>
               <md-table-cell md-label="Description">
-                {{ item.age }}
+                {{ item.description }}
               </md-table-cell>
               <md-table-cell md-label="Date">
-                {{ item.age }}
+                {{ item.updated_at }}
               </md-table-cell>
             </md-table-row>
           </md-table>
@@ -67,9 +67,8 @@
 </template>
 
 <script>
+import api from "@/api.js";
 import { Pagination } from "@/components";
-import users from "./Tables/users";
-import Fuse from "fuse.js";
 
 export default {
   components: {
@@ -81,9 +80,6 @@ export default {
      */
     queriedData() {
       let result = this.tableData;
-      if (this.searchedData.length > 0) {
-        result = this.searchedData;
-      }
       return result.slice(this.from, this.to);
     },
     to() {
@@ -97,9 +93,7 @@ export default {
       return this.pagination.perPage * (this.pagination.currentPage - 1);
     },
     total() {
-      return this.searchedData.length > 0
-        ? this.searchedData.length
-        : this.tableData.length;
+      return this.tableData.length;
     },
   },
   data() {
@@ -112,10 +106,7 @@ export default {
         perPageOptions: [5, 10, 25, 50],
         total: 0,
       },
-      searchQuery: "",
-      tableData: users,
-      searchedData: [],
-      fuseSearch: null,
+      tableData: [],
     };
   },
   methods: {
@@ -130,25 +121,9 @@ export default {
     },
   },
   mounted() {
-    // Fuse search initialization.
-    this.fuseSearch = new Fuse(this.tableData, {
-      keys: ["name", "email"],
-      threshold: 0.3,
+    api.get("/api/v1/transaction/list/").then((response) => {
+      this.tableData = response.data;
     });
-  },
-  watch: {
-    /**
-     * Searches through the table data by a given query.
-     * NOTE: If you have a lot of data, it's recommended to do the search on the Server Side and only display the results here.
-     * @param value of the query
-     */
-    searchQuery(value) {
-      let result = this.tableData;
-      if (value !== "") {
-        result = this.fuseSearch.search(this.searchQuery);
-      }
-      this.searchedData = result;
-    },
   },
 };
 </script>
