@@ -36,6 +36,8 @@ import Wizard from "@/pages/Dashboard/Forms/Wizard.vue";
 import RegularTables from "@/pages/Dashboard/Tables/RegularTables.vue";
 import ExtendedTables from "@/pages/Dashboard/Tables/ExtendedTables.vue";
 import PaginatedTables from "@/pages/Dashboard/Tables/PaginatedTables.vue";
+import Withdraw from "@/pages/Dashboard/Withdraw.vue";
+import Transaction from "@/pages/Dashboard/Transaction.vue";
 
 // Maps pages
 import GoogleMaps from "@/pages/Dashboard/Maps/GoogleMaps.vue";
@@ -246,6 +248,16 @@ const routes = [
         path: "invest",
         name: "Invest",
         components: { default: Invest },
+      },
+      {
+        path: "withdraw",
+        name: "Withdraw",
+        components: { default: Withdraw },
+      },
+      {
+        path: "transaction",
+        name: "Transaction",
+        components: { default: Transaction },
       },
       {
         path: "widgets",
