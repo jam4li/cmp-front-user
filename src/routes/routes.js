@@ -48,6 +48,8 @@ import Calendar from "@/pages/Dashboard/Calendar.vue";
 import Charts from "@/pages/Dashboard/Charts.vue";
 import Widgets from "@/pages/Dashboard/Widgets.vue";
 
+import Invest from "@/pages/Dashboard/Invest.vue";
+
 Vue.use(Router);
 
 let componentsMenu = {
@@ -239,6 +241,11 @@ const routes = [
         path: "charts",
         name: "Charts",
         components: { default: Charts },
+      },
+      {
+        path: "invest",
+        name: "Invest",
+        components: { default: Invest },
       },
       {
         path: "widgets",

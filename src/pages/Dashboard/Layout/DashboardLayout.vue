@@ -23,6 +23,9 @@
         </sidebar-item>
         <sidebar-item :link="{ name: 'ACCOUNTING', icon: 'paid' }">
           <sidebar-item
+            :link="{ name: 'Invest', path: '/invest' }"
+          ></sidebar-item>
+          <sidebar-item
             :link="{ name: 'Withdraw', path: '/withdraw' }"
           ></sidebar-item>
           <sidebar-item

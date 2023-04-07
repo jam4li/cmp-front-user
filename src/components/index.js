@@ -12,6 +12,7 @@ import SignupCard from "./Cards/SignupCard.vue";
 import LoginCard from "./Cards/LoginCard.vue";
 import StatsCard from "./Cards/StatsCard.vue";
 import ChartCard from "./Cards/ChartCard.vue";
+import InvestCard from "./Cards/InvestCard.vue";
 import AnnouncementCard from "./Cards/AnnouncementCard.vue";
 import NavTabsCard from "./Cards/NavTabsCard.vue";
 import ProductCard from "./Cards/ProductCard.vue";
@@ -41,6 +42,7 @@ export {
   StatsCard,
   LoginCard,
   ChartCard,
+  InvestCard,
   AnnouncementCard,
   NavTabsCard,
   ProductCard,
