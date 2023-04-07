@@ -2,6 +2,8 @@ import Vue from "vue";
 import Cookies from "js-cookie";
 import Router from "vue-router";
 
+import logger from "@/logger.js";
+
 import DashboardLayout from "@/pages/Dashboard/Layout/DashboardLayout.vue";
 import AuthLayout from "@/pages/Dashboard/Pages/AuthLayout.vue";
 
@@ -13,6 +15,7 @@ import User from "@/pages/Dashboard/Pages/UserProfile.vue";
 import TimeLine from "@/pages/Dashboard/Pages/TimeLinePage.vue";
 import Login from "@/pages/Dashboard/Pages/Login.vue";
 import Package from "@/pages/Dashboard/Pages/Package.vue";
+import PageNotFound from "@/pages/Dashboard/Pages/PageNotFound.vue";
 
 // Components pages
 import Buttons from "@/pages/Dashboard/Components/Buttons.vue";
@@ -250,6 +253,11 @@ const routes = [
       },
     ],
   },
+  {
+    path: "*",
+    components: { default: PageNotFound },
+    meta: { requiresAuth: true },
+  },
 ];
 
 const router = new Router({
@@ -268,8 +276,12 @@ router.beforeEach((to, from, next) => {
       logger.log("Token is not saved in the cookie:");
       const urlParams = new URLSearchParams(window.location.search);
       const new_token = urlParams.get("token");
-      Cookies.set("authToken", new_token, { expires: 1 });
-      next();
+      if (new_token) {
+        Cookies.set("authToken", new_token, { expires: 1 });
+        next();
+      } else {
+        next({ name: "Login" });
+      }
     }
   } else {
     next();
