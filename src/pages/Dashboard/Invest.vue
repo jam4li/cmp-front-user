@@ -9,10 +9,14 @@
     </div>
 
     <div class="md-layout">
-      <div class="md-layout-item md-size-25 md-small-size-100">
+      <div
+        v-for="invest in invests"
+        :key="invest.id"
+        class="md-layout-item md-size-25 md-small-size-100"
+      >
         <invest-card
           header-animation="false"
-          :chart-data="pieChart.data"
+          :chart-data="pieChartData(invest)"
           :chart-options="pieChart.options"
           chart-type="Pie"
           header-icon
@@ -20,18 +24,18 @@
           background-color="green"
         >
           <template slot="chartInsideHeader">
-            <h4 class="title">Pie Chart</h4>
+            <h4 class="title">{{ invest.package.name }}</h4>
           </template>
           <template slot="footer">
             <div class="md-layout">
               <div class="md-layout-item md-size-100">
-                <md-icon>paid</md-icon> Invest: 100$
+                <md-icon>paid</md-icon> Invest: {{ invest.invest }}$
               </div>
               <div class="md-layout-item md-size-100">
-                <md-icon>payments</md-icon> Profit: 73$
+                <md-icon>payments</md-icon> Profit: {{ invest.profit }}$
               </div>
               <div class="md-layout-item md-size-100">
-                <md-icon>savings</md-icon> Staking: 73$
+                <md-icon>savings</md-icon> Staking: Calculating
               </div>
             </div>
           </template>
@@ -42,28 +46,50 @@
 </template>
 
 <script>
+import api from "@/api.js";
 import { InvestCard } from "@/components";
+
 export default {
   components: {
     InvestCard,
   },
   data() {
     return {
+      invests: [],
       pieChart: {
-        data: {
-          labels: ["62%"],
-          series: [62],
-        },
         options: {
           height: "190px",
           donut: true,
           donutWidth: 40,
           startAngle: 270,
           showLabel: true,
-          total: 100,
+          total: 200,
         },
       },
     };
+  },
+  created() {
+    this.fetchInvests();
+  },
+  methods: {
+    async fetchInvests() {
+      try {
+        const response = await api.get("/api/v1/invest/list/");
+        this.invests = response.data;
+      } catch (error) {
+        console.error("Error fetching posts:", error);
+      }
+    },
+    pieChartData(invest) {
+      const total = invest.invest * 2;
+      return {
+        labels: [`${invest.profit}`],
+        series: [invest.profit],
+        options: {
+          total: total,
+        },
+      };
+    },
   },
 };
 </script>

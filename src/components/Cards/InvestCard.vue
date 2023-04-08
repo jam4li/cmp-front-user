@@ -5,6 +5,7 @@
     class="md-card-chart"
   >
     <md-card-header
+      class="text-center"
       @mouseenter.native="onMouseOver"
       :data-header-animation="headerAnimation"
       :class="[
