@@ -23,8 +23,16 @@ services:
       - ./data/nginx/nginx.staging.conf:/etc/nginx/conf.d/default.conf
       - ./data/certs/cloudminepro.crt:/etc/nginx/certs/cloudminepro.crt
       - ./data/certs/cloudminepro.key:/etc/nginx/certs/cloudminepro.key
+      - static_volume:/cmp_api_python/static
+      - media_volume:/cmp_api_python/media
     networks:
       - my_network
+
+volumes:
+  static_volume:
+    external: true
+  media_volume:
+    external: true
 
 networks:
   my_network:
