@@ -22,13 +22,7 @@
           </div>
           <template slot="footer">
             <div class="price">
-              <h4>$459/night</h4>
-            </div>
-            <div class="stats">
-              <p class="category">
-                <md-icon>place</md-icon>
-                Milan, Italy
-              </p>
+              <md-button class="md-info">Buy</md-button>
             </div>
           </template>
         </product-card>
@@ -56,7 +50,7 @@ export default {
   methods: {
     async fetchPackages() {
       try {
-        const response = await api.get("/7c4bacbd-9639-44f0-aee0-899cfe3c23ce"); // Replace with your API endpoint
+        const response = await api.get("/api/v1/package/list/"); // Replace with your API endpoint
         this.packages = response.data;
       } catch (error) {
         console.error("Error fetching posts:", error);
