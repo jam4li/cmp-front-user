@@ -76,91 +76,52 @@
         </md-card-header>
 
         <md-card-content>
-          <div class="faq-list">
-            <div v-for="(faq, index) in faqs" :key="index">
-              <div class="faq-question" @click="toggleDescription(index)">
-                {{ faq.question }}
-                <i
-                  v-bind:class="[
-                    { 'fa-chevron-circle-down': faq.showDescription },
-                    { 'fa-chevron-circle-right': !faq.showDescription },
-                  ]"
-                  class="fa"
-                ></i>
-              </div>
-              <div class="faq-description" v-if="faq.showDescription">
-                {{ faq.description }}
-              </div>
-              <hr />
-            </div>
-          </div>
+          <collapse
+            :collapse="[
+              'Collapsible Group Item #1',
+              'Collapsible Group Item #2',
+              'Collapsible Group Item #3',
+            ]"
+            icon="keyboard_arrow_down"
+            color-collapse="success"
+          >
+            <template slot="md-collapse-pane-1">
+              <p>
+                Anim pariatur cliche reprehenderit, enim eiusmod high life
+                accusamus terry richardson ad squid. 3 wolf moon officia aute,
+                non cupidatat skateboard dolor brunch. Food truck quinoa
+                nesciunt laborum eiusmod.
+              </p>
+            </template>
+            <template slot="md-collapse-pane-2">
+              <p>
+                Anim pariatur cliche reprehenderit, enim eiusmod high life
+                accusamus terry richardson ad squid. Food truck quinoa nesciunt
+                laborum eiusmod.
+              </p>
+            </template>
+            <template slot="md-collapse-pane-3">
+              <p>
+                Anim pariatur cliche reprehenderit, enim eiusmod high life
+                accusamus terry richardson ad squid. 3 wolf moon officia aute,
+                non cupidatat skateboard dolor brunch.
+              </p>
+            </template>
+          </collapse>
         </md-card-content>
       </md-card>
     </div>
   </div>
 </template>
 <script>
+import { Collapse } from "@/components";
+
 export default {
-  el: "#app",
-  components: {},
-  data() {
-    return {
-      faqs: [
-        {
-          question: "What is Vue?",
-          description:
-            "Vue is a progressive framework for building user interfaces. It is designed to be easy to adopt and integrate into other libraries or existing projects.",
-          showDescription: false,
-        },
-        {
-          question: "What are the benefits of using Vue?",
-          description:
-            "Vue has a small footprint and is easy to learn. It provides reactive and composable view components, making it easy to build complex UIs. It also has a thriving ecosystem of tools and plugins.",
-          showDescription: false,
-        },
-        {
-          question: "How do I get started with Vue?",
-          description:
-            "You can get started with Vue by downloading it from the official website, or by using a package manager like npm or yarn. Vue also has a CLI tool that can generate a new project for you.",
-          showDescription: false,
-        },
-        {
-          question: "Is Vue suitable for large-scale applications?",
-          description:
-            "Yes, Vue is suitable for large-scale applications. It provides tools and patterns for managing state and scaling applications, and has been used by companies like Alibaba, Xiaomi, and Expedia for large-scale projects.",
-          showDescription: false,
-        },
-        {
-          question: "What is Vue?",
-          description:
-            "Vue is a progressive framework for building user interfaces. It is designed to be easy to adopt and integrate into other libraries or existing projects.",
-          showDescription: false,
-        },
-        {
-          question: "What are the benefits of using Vue?",
-          description:
-            "Vue has a small footprint and is easy to learn. It provides reactive and composable view components, making it easy to build complex UIs. It also has a thriving ecosystem of tools and plugins.",
-          showDescription: false,
-        },
-        {
-          question: "How do I get started with Vue?",
-          description:
-            "You can get started with Vue by downloading it from the official website, or by using a package manager like npm or yarn. Vue also has a CLI tool that can generate a new project for you.",
-          showDescription: false,
-        },
-        {
-          question: "Is Vue suitable for large-scale applications?",
-          description:
-            "Yes, Vue is suitable for large-scale applications. It provides tools and patterns for managing state and scaling applications, and has been used by companies like Alibaba, Xiaomi, and Expedia for large-scale projects.",
-          showDescription: false,
-        },
-      ],
-    };
+  components: {
+    Collapse,
   },
-  methods: {
-    toggleDescription(index) {
-      this.faqs[index].showDescription = !this.faqs[index].showDescription;
-    },
+  data() {
+    return {};
   },
 };
 </script>
