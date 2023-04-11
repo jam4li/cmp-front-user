@@ -58,7 +58,7 @@
         >
         </sidebar-item>
         <sidebar-item
-          :link="{ name: 'Logout', icon: 'logout', path: '/calendar' }"
+          :link="{ name: 'Logout', icon: 'logout', path: '/logout' }"
         ></sidebar-item>
       </template>
     </side-bar>

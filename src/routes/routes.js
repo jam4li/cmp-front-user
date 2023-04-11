@@ -299,6 +299,15 @@ const routes = [
         components: { default: Package },
         meta: { requiresAuth: true },
       },
+      {
+        path: "/logout",
+        name: "Logout",
+        beforeEnter: async (to, from, next) => {
+          Cookies.remove("authToken");
+
+          next("/login");
+        },
+      },
     ],
   },
   {
