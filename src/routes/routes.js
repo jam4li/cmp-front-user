@@ -53,6 +53,7 @@ import Widgets from "@/pages/Dashboard/Widgets.vue";
 
 import Invest from "@/pages/Dashboard/Invest.vue";
 import Support from "@/pages/Dashboard/Support.vue";
+import Authentication from "@/pages/Dashboard/Authentication.vue";
 
 Vue.use(Router);
 
@@ -254,6 +255,12 @@ const routes = [
         path: "dashboard",
         name: "Dashboard",
         components: { default: Dashboard },
+        meta: { requiresAuth: true },
+      },
+      {
+        path: "authentication",
+        name: "authentication",
+        components: { default: Authentication },
         meta: { requiresAuth: true },
       },
       {

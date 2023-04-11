@@ -43,6 +43,14 @@
         </sidebar-item>
         <sidebar-item
           :link="{
+            name: 'Authentication',
+            icon: 'verified',
+            path: '/authentication',
+          }"
+        >
+        </sidebar-item>
+        <sidebar-item
+          :link="{
             name: 'Support',
             icon: 'contact_support',
             path: '/support',
