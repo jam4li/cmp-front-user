@@ -52,6 +52,7 @@ import Charts from "@/pages/Dashboard/Charts.vue";
 import Widgets from "@/pages/Dashboard/Widgets.vue";
 
 import Invest from "@/pages/Dashboard/Invest.vue";
+import Support from "@/pages/Dashboard/Support.vue";
 
 Vue.use(Router);
 
@@ -216,11 +217,17 @@ let support = {
   path: "/support",
   name: "Support",
   component: DashboardLayout,
+  redirect: "/support/list",
   children: [
     {
       path: "create",
       name: "Ticket Form",
       components: { default: TicketForm },
+    },
+    {
+      path: "list",
+      name: "Ticket List",
+      components: { default: Support },
     },
   ],
 };
