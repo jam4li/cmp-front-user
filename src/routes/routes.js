@@ -54,6 +54,7 @@ import Widgets from "@/pages/Dashboard/Widgets.vue";
 import Invest from "@/pages/Dashboard/Invest.vue";
 import Support from "@/pages/Dashboard/Support.vue";
 import Authentication from "@/pages/Dashboard/Authentication.vue";
+import Network from "@/pages/Dashboard/Network.vue";
 
 Vue.use(Router);
 
@@ -277,6 +278,11 @@ const routes = [
         path: "invest",
         name: "Invest",
         components: { default: Invest },
+      },
+      {
+        path: "network",
+        name: "Network",
+        components: { default: Network },
       },
       {
         path: "withdraw",

@@ -15,7 +15,7 @@
         </sidebar-item>
         <sidebar-item :link="{ name: 'NETWORK', icon: 'schema' }">
           <sidebar-item
-            :link="{ name: 'My Network', path: '/pricing' }"
+            :link="{ name: 'My Network', path: '/network' }"
           ></sidebar-item>
           <sidebar-item
             :link="{ name: 'Network Accounting', path: '/pages/rtl' }"
