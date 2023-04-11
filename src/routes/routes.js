@@ -30,6 +30,7 @@ import Typography from "@/pages/Dashboard/Components/Typography.vue";
 import RegularForms from "@/pages/Dashboard/Forms/RegularForms.vue";
 import ExtendedForms from "@/pages/Dashboard/Forms/ExtendedForms.vue";
 import ValidationForms from "@/pages/Dashboard/Forms/ValidationForms.vue";
+import TicketForm from "@/pages/Dashboard/Forms/TicketForm.vue";
 import Wizard from "@/pages/Dashboard/Forms/Wizard.vue";
 
 // TableList pages
@@ -211,6 +212,19 @@ let authPages = {
   ],
 };
 
+let support = {
+  path: "/support",
+  name: "Support",
+  component: DashboardLayout,
+  children: [
+    {
+      path: "create",
+      name: "Ticket Form",
+      components: { default: TicketForm },
+    },
+  ],
+};
+
 const routes = [
   {
     path: "/",
@@ -224,6 +238,7 @@ const routes = [
   mapsMenu,
   pagesMenu,
   authPages,
+  support,
   {
     path: "/",
     component: DashboardLayout,
