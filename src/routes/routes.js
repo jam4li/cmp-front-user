@@ -55,6 +55,7 @@ import Invest from "@/pages/Dashboard/Invest.vue";
 import Support from "@/pages/Dashboard/Support.vue";
 import Authentication from "@/pages/Dashboard/Authentication.vue";
 import Network from "@/pages/Dashboard/Network.vue";
+import Wallet from "@/pages/Dashboard/Wallet.vue";
 
 Vue.use(Router);
 
@@ -298,6 +299,11 @@ const routes = [
         path: "widgets",
         name: "Widgets",
         components: { default: Widgets },
+      },
+      {
+        path: "wallet",
+        name: "Wallet",
+        components: { default: Wallet },
       },
       {
         path: "package",

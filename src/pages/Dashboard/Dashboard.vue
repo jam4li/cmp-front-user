@@ -37,7 +37,7 @@
         <template slot="footer">
           <div class="stats">
             <md-icon>local_offer</md-icon>
-            <a href="#">All Wallets</a>
+            <a href="wallet/">All Wallets</a>
           </div>
         </template>
       </stats-card>

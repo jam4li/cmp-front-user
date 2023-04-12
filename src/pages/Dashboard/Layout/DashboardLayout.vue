@@ -38,6 +38,14 @@
           ></sidebar-item>
         </sidebar-item>
         <sidebar-item
+          :link="{
+            name: 'Wallet',
+            icon: 'account_balance_wallet',
+            path: '/wallet',
+          }"
+        >
+        </sidebar-item>
+        <sidebar-item
           :link="{ name: 'Package', icon: 'redeem', path: '/package' }"
         >
         </sidebar-item>
