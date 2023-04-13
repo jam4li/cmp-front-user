@@ -6,7 +6,7 @@
           <div class="card-icon">
             <md-icon>assignment</md-icon>
           </div>
-          <h4 class="title">Your Withdrawal History</h4>
+          <h4 class="title">{{ $t("withdraw.table.title") }}</h4>
         </md-card-header>
         <md-card-content>
           <md-table
@@ -32,19 +32,24 @@
               </md-field>
             </md-table-toolbar>
             <md-table-row slot="md-table-row" slot-scope="{ item }">
-              <md-table-cell md-label="Wallet Type" md-sort-by="wallet_type">
+              <md-table-cell
+                v-bind:md-label="$t('withdraw.table.walletType')"
+                md-sort-by="wallet_type"
+              >
                 {{ item.wallet_type }}
               </md-table-cell>
-              <md-table-cell md-label="Wallet Address">
+              <md-table-cell
+                v-bind:md-label="$t('withdraw.table.walletAddress')"
+              >
                 {{ item.wallet_address }}
               </md-table-cell>
-              <md-table-cell md-label="Amount">
+              <md-table-cell v-bind:md-label="$t('withdraw.table.amount')">
                 {{ item.amount }}
               </md-table-cell>
-              <md-table-cell md-label="Status">
+              <md-table-cell v-bind:md-label="$t('withdraw.table.status')">
                 {{ item.status }}
               </md-table-cell>
-              <md-table-cell md-label="Date">
+              <md-table-cell v-bind:md-label="$t('withdraw.table.date')">
                 {{ item.updated_at }}
               </md-table-cell>
             </md-table-row>

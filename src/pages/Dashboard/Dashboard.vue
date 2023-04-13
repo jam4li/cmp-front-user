@@ -6,7 +6,7 @@
           <div class="card-icon">
             <md-icon>shopping_cart</md-icon>
           </div>
-          <p class="category">{{ $t("Active Packages") }}</p>
+          <p class="category">{{ $t("dashboard.activePackages") }}</p>
           <h3 class="title">
             <animated-number
               :value="userInfo.active_packages"
@@ -17,7 +17,7 @@
         <template slot="footer">
           <div class="stats">
             <md-icon>info</md-icon>
-            <a href="#">{{ $t("More Info") }}</a>
+            <a href="#">{{ $t("dashboard.moreInfo") }}</a>
           </div>
         </template>
       </stats-card>
@@ -28,7 +28,7 @@
           <div class="card-icon">
             <md-icon>account_balance_wallet</md-icon>
           </div>
-          <p class="category">{{ $t("Balance") }}</p>
+          <p class="category">{{ $t("dashboard.balance") }}</p>
           <h3 class="title">
             $ <animated-number :value="userInfo.balance"></animated-number>
           </h3>
@@ -37,7 +37,7 @@
         <template slot="footer">
           <div class="stats">
             <md-icon>local_offer</md-icon>
-            <a href="wallet/">{{ $t("All Wallets") }}</a>
+            <a href="wallet/">{{ $t("dashboard.allWallets") }}</a>
           </div>
         </template>
       </stats-card>
@@ -48,7 +48,7 @@
           <div class="card-icon">
             <md-icon>person_add</md-icon>
           </div>
-          <p class="category">{{ $t("Direct Invited") }}</p>
+          <p class="category">{{ $t("dashboard.directInvited") }}</p>
           <h3 class="title">
             <animated-number :value="userInfo.direct_invited"></animated-number>
           </h3>
@@ -57,7 +57,7 @@
         <template slot="footer">
           <div class="stats">
             <md-icon>add_circle</md-icon>
-            <a href="#">Add Direct Invites</a>
+            <a href="#">{{ $t("dashboard.addDirectInvites") }}</a>
           </div>
         </template>
       </stats-card>
@@ -68,7 +68,7 @@
           <div class="card-icon">
             <md-icon>groups</md-icon>
           </div>
-          <p class="category">{{ $t("Your Team") }}</p>
+          <p class="category">{{ $t("dashboard.yourTeam") }}</p>
           <h3 class="title">
             <animated-number :value="userInfo.team"></animated-number>
           </h3>
@@ -77,7 +77,7 @@
         <template slot="footer">
           <div class="stats">
             <md-icon>info</md-icon>
-            <a href="#">{{ $t("More Info") }}</a>
+            <a href="#">{{ $t("dashboard.moreInfo") }}</a>
           </div>
         </template>
       </stats-card>
@@ -88,7 +88,7 @@
           <div class="card-icon">
             <md-icon>campaign</md-icon>
           </div>
-          <h4 class="title">{{ $t("Announcements") }}</h4>
+          <h4 class="title">{{ $t("dashboard.announcements") }}</h4>
         </template>
 
         <template slot="content">

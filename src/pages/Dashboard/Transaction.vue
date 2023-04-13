@@ -6,7 +6,7 @@
           <div class="card-icon">
             <md-icon>assignment</md-icon>
           </div>
-          <h4 class="title">Transaction History</h4>
+          <h4 class="title">{{ $t("transaction.table.title") }}</h4>
         </md-card-header>
         <md-card-content>
           <md-table
@@ -32,16 +32,21 @@
               </md-field>
             </md-table-toolbar>
             <md-table-row slot="md-table-row" slot-scope="{ item }">
-              <md-table-cell md-label="Type" md-sort-by="type">
+              <md-table-cell
+                v-bind:md-label="$t('transaction.table.type')"
+                md-sort-by="type"
+              >
                 {{ item.type }}
               </md-table-cell>
-              <md-table-cell md-label="Amount">
+              <md-table-cell v-bind:md-label="$t('transaction.table.amount')">
                 {{ item.amount }}
               </md-table-cell>
-              <md-table-cell md-label="Description">
+              <md-table-cell
+                v-bind:md-label="$t('transaction.table.description')"
+              >
                 {{ item.description }}
               </md-table-cell>
-              <md-table-cell md-label="Date">
+              <md-table-cell v-bind:md-label="$t('transaction.table.date')">
                 {{ item.updated_at }}
               </md-table-cell>
             </md-table-row>

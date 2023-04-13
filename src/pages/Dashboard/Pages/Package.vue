@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="header text-center">
-      <h3 class="title">List of Packages</h3>
-      <p class="category">Choose Your Favorite One.</p>
+      <h3 class="title">{{ $t("package.title") }}</h3>
+      <p class="category">{{ $t("package.subtitle") }}</p>
     </div>
 
     <div class="md-layout">

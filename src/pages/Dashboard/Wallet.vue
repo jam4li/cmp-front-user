@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="header text-center">
-      <h3 class="title">Wallets and Balances</h3>
+      <h3 class="title">{{ $t("wallet.title") }}</h3>
       <p class="category">
-        Keep track of your cryptocurrency balances with ease.
+        {{ $t("wallet.subtitle") }}
       </p>
     </div>
 
@@ -14,7 +14,7 @@
             <div class="card-icon">
               <md-icon>account_balance_wallet</md-icon>
             </div>
-            <h4 class="title">List Of Wallets</h4>
+            <h4 class="title">{{ $t("wallet.table.title") }}</h4>
           </md-card-header>
           <md-card-content>
             <md-table
@@ -25,9 +25,13 @@
               class="paginated-table table-striped table-hover"
             >
               <md-table-row slot="md-table-row" slot-scope="{ item }">
-                <md-table-cell md-label="Title">{{ item.title }}</md-table-cell>
-                <md-table-cell md-label="Type">{{ item.type }}</md-table-cell>
-                <md-table-cell md-label="Balance">{{
+                <md-table-cell v-bind:md-label="$t('wallet.table.title')">{{
+                  item.title
+                }}</md-table-cell>
+                <md-table-cell v-bind:md-label="$t('wallet.table.type')">{{
+                  item.type
+                }}</md-table-cell>
+                <md-table-cell v-bind:md-label="$t('wallet.table.balance')">{{
                   item.balance
                 }}</md-table-cell>
               </md-table-row>

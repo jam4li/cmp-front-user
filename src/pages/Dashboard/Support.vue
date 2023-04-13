@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="header text-center">
-      <h3 class="title">Support And Ticket</h3>
+      <h3 class="title">{{ $t("support.title") }}</h3>
       <p class="category">
-        Get help with your questions and issues by submitting a support ticket.
+        {{ $t("support.subtitle") }}
       </p>
       <p class="category">
         To create a new support ticket, please click on the

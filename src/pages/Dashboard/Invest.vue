@@ -1,10 +1,9 @@
 <template>
   <div>
     <div class="header text-center">
-      <h3 class="title">Welcome to your Investment Dashboard.</h3>
+      <h3 class="title">{{ $t("invest.title") }}</h3>
       <p>
-        As a valued investor, this dashboard is designed to provide you with a
-        comprehensive overview of your financial portfolio.
+        {{ $t("invest.subtitle") }}
       </p>
     </div>
 

@@ -3,40 +3,30 @@
     <div class="md-layout-item md-size-100 md-xsmall-size-100 mx-auto">
       <simple-wizard>
         <template slot="header">
-          <h3 class="title">Authentication</h3>
+          <h3 class="title">{{ $t("authentication.title") }}</h3>
           <h5 class="category">
-            This will help us verify your invitation and grant you access to the
-            appropriate features.
+            {{ $t("authentication.subtitle") }}
           </h5>
         </template>
 
-        <wizard-tab :before-change="() => validateStep('step1')">
+        <wizard-tab>
           <template slot="label"> Email </template>
-          <first-step ref="step1" @on-validated="onStepValidated"></first-step>
+          <first-step ref="step1"></first-step>
         </wizard-tab>
 
-        <wizard-tab :before-change="() => validateStep('step2')">
+        <wizard-tab>
           <template slot="label"> Pending </template>
-          <second-step
-            ref="step2"
-            @on-validated="onStepValidated"
-          ></second-step>
+          <second-step ref="step2"></second-step>
         </wizard-tab>
 
-        <wizard-tab :before-change="() => validateStep('step2')">
+        <wizard-tab>
           <template slot="label"> Accepted </template>
-          <second-step
-            ref="step2"
-            @on-validated="onStepValidated"
-          ></second-step>
+          <second-step ref="step2"></second-step>
         </wizard-tab>
 
-        <wizard-tab :before-change="() => validateStep('step2')">
+        <wizard-tab>
           <template slot="label"> Rejected </template>
-          <second-step
-            ref="step2"
-            @on-validated="onStepValidated"
-          ></second-step>
+          <second-step ref="step2"></second-step>
         </wizard-tab>
       </simple-wizard>
     </div>
@@ -60,22 +50,6 @@ export default {
     SimpleWizard,
     WizardTab,
   },
-  methods: {
-    validateStep(ref) {
-      return this.$refs[ref].validate();
-    },
-    onStepValidated(validated, model) {
-      this.wizardModel = { ...this.wizardModel, ...model };
-    },
-    wizardComplete() {
-      Swal.fire({
-        title: "Good job!",
-        text: "You clicked the finish button!",
-        type: "success",
-        confirmButtonClass: "md-button md-success",
-        buttonsStyling: false,
-      });
-    },
-  },
+  methods: {},
 };
 </script>
