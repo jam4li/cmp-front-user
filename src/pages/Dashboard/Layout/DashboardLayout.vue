@@ -10,48 +10,52 @@
       <mobile-menu></mobile-menu>
       <template slot="links">
         <sidebar-item
-          :link="{ name: 'Dashboard', icon: 'dashboard', path: '/dashboard' }"
+          :link="{
+            name: $t('Dashboard'),
+            icon: 'dashboard',
+            path: '/dashboard',
+          }"
         >
         </sidebar-item>
-        <sidebar-item :link="{ name: 'NETWORK', icon: 'schema' }">
+        <sidebar-item :link="{ name: $t('Network'), icon: 'schema' }">
           <sidebar-item
-            :link="{ name: 'My Network', path: '/network' }"
+            :link="{ name: $t('My Network'), path: '/network' }"
           ></sidebar-item>
           <sidebar-item
-            :link="{ name: 'Network Accounting', path: '/pages/rtl' }"
-          ></sidebar-item>
-        </sidebar-item>
-        <sidebar-item :link="{ name: 'ACCOUNTING', icon: 'paid' }">
-          <sidebar-item
-            :link="{ name: 'Invest', path: '/invest' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: 'Withdraw', path: '/withdraw' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: 'Transaction', path: '/transaction' }"
+            :link="{ name: $t('Network Accounting'), path: '/pages/rtl' }"
           ></sidebar-item>
         </sidebar-item>
-        <sidebar-item :link="{ name: 'Company', icon: 'apartment' }">
+        <sidebar-item :link="{ name: $t('Accounting'), icon: 'paid' }">
           <sidebar-item
-            :link="{ name: 'Roadmap', path: '/pages/roadmap' }"
+            :link="{ name: $t('Invest'), path: '/invest' }"
+          ></sidebar-item>
+          <sidebar-item
+            :link="{ name: $t('Withdraw'), path: '/withdraw' }"
+          ></sidebar-item>
+          <sidebar-item
+            :link="{ name: $t('Transaction'), path: '/transaction' }"
+          ></sidebar-item>
+        </sidebar-item>
+        <sidebar-item :link="{ name: $t('Company'), icon: 'apartment' }">
+          <sidebar-item
+            :link="{ name: $t('Roadmap'), path: '/pages/roadmap' }"
           ></sidebar-item>
         </sidebar-item>
         <sidebar-item
           :link="{
-            name: 'Wallet',
+            name: $t('Wallet'),
             icon: 'account_balance_wallet',
             path: '/wallet',
           }"
         >
         </sidebar-item>
         <sidebar-item
-          :link="{ name: 'Package', icon: 'redeem', path: '/package' }"
+          :link="{ name: $t('Package'), icon: 'redeem', path: '/package' }"
         >
         </sidebar-item>
         <sidebar-item
           :link="{
-            name: 'Authentication',
+            name: $t('Authentication'),
             icon: 'verified',
             path: '/authentication',
           }"
@@ -59,14 +63,14 @@
         </sidebar-item>
         <sidebar-item
           :link="{
-            name: 'Support',
+            name: $t('Support'),
             icon: 'contact_support',
             path: '/support',
           }"
         >
         </sidebar-item>
         <sidebar-item
-          :link="{ name: 'Logout', icon: 'logout', path: '/logout' }"
+          :link="{ name: $t('Logout'), icon: 'logout', path: '/logout' }"
         ></sidebar-item>
       </template>
     </side-bar>

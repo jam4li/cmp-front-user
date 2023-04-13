@@ -15,6 +15,8 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import DashboardPlugin from "./material-dashboard";
 
+import i18n from "./i18n";
+
 // Plugins
 import App from "./App.vue";
 import Chartist from "chartist";
@@ -36,6 +38,7 @@ Vue.prototype.$Chartist = Chartist;
 /* eslint-disable no-new */
 new Vue({
   el: "#app",
+  i18n,
   render: (h) => h(App),
   router,
 });
