@@ -12,7 +12,7 @@
         </md-card-header>
 
         <md-card-content>
-          <form class="form-horizontal" action="" method="post">
+          <form class="form-horizontal" @submit.prevent="submitForm">
             <div class="md-layout">
               <label class="md-layout-item md-size-25 md-form-label">
                 Title
@@ -20,26 +20,25 @@
               <div class="md-layout-item md-size-75">
                 <md-field>
                   <label>Enter Title</label>
-                  <md-input v-model="layout1" type="text"></md-input>
+                  <md-input v-model="title" type="text"></md-input>
                 </md-field>
               </div>
             </div>
 
             <div class="md-layout">
               <label class="md-layout-item md-size-25 md-form-label">
-                Type
+                Department
               </label>
               <div class="md-layout-item md-size-75">
                 <md-field>
-                  <label for="movies">Enter Type</label>
-                  <md-select v-model="selectedMovies" name="movies" id="movies">
-                    <md-option value="fight-club">Fight Club</md-option>
-                    <md-option value="godfather">Godfather</md-option>
-                    <md-option value="godfather-ii">Godfather II</md-option>
-                    <md-option value="godfather-iii">Godfather III</md-option>
-                    <md-option value="godfellas">Godfellas</md-option>
-                    <md-option value="pulp-fiction">Pulp Fiction</md-option>
-                    <md-option value="scarface">Scarface</md-option>
+                  <label for="movies">Enter Department</label>
+                  <md-select v-model="selectedDepartment" id="departments">
+                    <md-option
+                      v-for="department in departmentList"
+                      :key="department.id"
+                      :value="department.id"
+                      >{{ department.name }}</md-option
+                    >
                   </md-select>
                 </md-field>
               </div>
@@ -52,16 +51,15 @@
               <div class="md-layout-item md-size-75">
                 <md-field>
                   <label>Enter Description</label>
-                  <md-input v-model="layout1" type="text"></md-input>
+                  <md-input v-model="description" type="text"></md-input>
                 </md-field>
               </div>
             </div>
+            <md-card-actions md-alignment="left">
+              <md-button type="submit" class="md-success">Submit</md-button>
+            </md-card-actions>
           </form>
         </md-card-content>
-
-        <md-card-actions md-alignment="left">
-          <md-button class="md-success">Submit</md-button>
-        </md-card-actions>
       </md-card>
     </div>
     <div
@@ -115,13 +113,58 @@
 </template>
 <script>
 import { Collapse } from "@/components";
+import api from "@/api.js";
 
 export default {
   components: {
     Collapse,
   },
   data() {
-    return {};
+    return {
+      departmentList: [],
+      title: "",
+      description: "",
+      selectedDepartment: null,
+    };
+  },
+  created() {
+    this.fetchDepartments();
+  },
+  methods: {
+    fetchDepartments() {
+      api
+        .get("api/v1/support/department/list/")
+        .then((response) => {
+          this.departmentList = response.data; // Assuming the API returns an array of movie objects
+        })
+        .catch((error) => {
+          console.error("Error fetching movies:", error);
+        });
+    },
+    submitForm() {
+      api
+        .post("api/v1/support/ticket/create/", {
+          title: this.title,
+          department: this.selectedDepartment,
+          content: this.description,
+        })
+        .then((response) => {
+          if (response.data.success) {
+            this.$emit("ticketCreated", response.data.ticket_id);
+            alert(response.data.message);
+            // Reset the form
+            this.title = "";
+            this.selectedDepartment = null;
+            this.description = "";
+          } else {
+            alert(response.data.message);
+          }
+        })
+        .catch((error) => {
+          console.error("Error submitting form:", error);
+          alert("Error submitting form. Please try again.");
+        });
+    },
   },
 };
 </script>

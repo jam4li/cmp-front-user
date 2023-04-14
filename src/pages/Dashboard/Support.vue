@@ -60,14 +60,16 @@
 
               <md-table-row slot="md-table-row" slot-scope="{ item }">
                 <md-table-cell md-label="id" md-sort-by="name">{{
-                  item.name
+                  item.id
                 }}</md-table-cell>
                 <md-table-cell md-label="Title" md-sort-by="email">{{
-                  item.email
+                  item.title
                 }}</md-table-cell>
-                <md-table-cell md-label="Type">{{ item.age }}</md-table-cell>
+                <md-table-cell md-label="Content">{{
+                  item.content
+                }}</md-table-cell>
                 <md-table-cell md-label="Last Update">{{
-                  item.salary
+                  item.created_at
                 }}</md-table-cell>
               </md-table-row>
             </md-table>
@@ -113,7 +115,7 @@
 
 <script>
 import { Pagination } from "@/components";
-import users from "./Tables/users";
+import api from "@/api.js";
 import Fuse from "fuse.js";
 import Swal from "sweetalert2";
 
@@ -160,7 +162,7 @@ export default {
       },
       searchQuery: "",
       propsToSearch: ["name", "email", "age"],
-      tableData: users,
+      tableData: [],
       searchedData: [],
       fuseSearch: null,
     };
@@ -230,6 +232,9 @@ export default {
     this.fuseSearch = new Fuse(this.tableData, {
       keys: ["name", "email"],
       threshold: 0.3,
+    });
+    api.get("/api/v1/support/ticket/list/").then((response) => {
+      this.tableData = response.data;
     });
   },
   watch: {
