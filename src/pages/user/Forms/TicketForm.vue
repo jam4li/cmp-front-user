@@ -133,7 +133,7 @@ export default {
   methods: {
     fetchDepartments() {
       api
-        .get("api/v1/support/department/list/")
+        .get("api/v1/support/user/department/list/")
         .then((response) => {
           this.departmentList = response.data; // Assuming the API returns an array of movie objects
         })
@@ -143,7 +143,7 @@ export default {
     },
     submitForm() {
       api
-        .post("api/v1/support/ticket/create/", {
+        .post("api/v1/support/user/ticket/create/", {
           title: this.title,
           department: this.selectedDepartment,
           content: this.description,

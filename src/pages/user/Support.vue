@@ -233,7 +233,7 @@ export default {
       keys: ["name", "email"],
       threshold: 0.3,
     });
-    api.get("/api/v1/support/ticket/list/").then((response) => {
+    api.get("/api/v1/support/user/ticket/list/").then((response) => {
       this.tableData = response.data;
     });
   },

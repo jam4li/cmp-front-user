@@ -89,7 +89,7 @@ export default {
     };
   },
   mounted() {
-    api.get("/api/v1/wallet/list/").then((response) => {
+    api.get("/api/v1/wallet/user/list/").then((response) => {
       this.tableData = response.data;
     });
   },

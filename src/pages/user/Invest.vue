@@ -73,7 +73,7 @@ export default {
   methods: {
     async fetchInvests() {
       try {
-        const response = await api.get("/api/v1/invest/list/");
+        const response = await api.get("/api/v1/invest/user/list/");
         this.invests = response.data;
       } catch (error) {
         console.error("Error fetching posts:", error);

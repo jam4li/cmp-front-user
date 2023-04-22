@@ -154,7 +154,7 @@ export default {
   methods: {
     async fetchAnnouncements() {
       try {
-        const response = await api.get("/api/v1/announcement/list/"); // Replace with your API endpoint
+        const response = await api.get("/api/v1/announcement/user/list/"); // Replace with your API endpoint
         this.announcements = response.data;
       } catch (error) {
         logger.error("Error fetching posts:", error);
@@ -162,7 +162,7 @@ export default {
     },
     async fetchUserInfo() {
       try {
-        const response = await api.get("/api/v1/user/dashboard/"); // Replace with your API endpoint
+        const response = await api.get("/api/v1/user/user/dashboard/"); // Replace with your API endpoint
         this.userInfo = response.data;
       } catch (error) {
         logger.error("Error fetching posts:", error);

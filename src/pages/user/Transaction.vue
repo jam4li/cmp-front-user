@@ -6,7 +6,7 @@
           <div class="card-icon">
             <md-icon>assignment</md-icon>
           </div>
-          <h4 class="title">{{ $t("withdraw.table.title") }}</h4>
+          <h4 class="title">{{ $t("transaction.table.title") }}</h4>
         </md-card-header>
         <md-card-content>
           <md-table
@@ -33,23 +33,20 @@
             </md-table-toolbar>
             <md-table-row slot="md-table-row" slot-scope="{ item }">
               <md-table-cell
-                v-bind:md-label="$t('withdraw.table.walletType')"
-                md-sort-by="wallet_type"
+                v-bind:md-label="$t('transaction.table.type')"
+                md-sort-by="type"
               >
-                {{ item.wallet_type }}
+                {{ item.type }}
               </md-table-cell>
-              <md-table-cell
-                v-bind:md-label="$t('withdraw.table.walletAddress')"
-              >
-                {{ item.wallet_address }}
-              </md-table-cell>
-              <md-table-cell v-bind:md-label="$t('withdraw.table.amount')">
+              <md-table-cell v-bind:md-label="$t('transaction.table.amount')">
                 {{ item.amount }}
               </md-table-cell>
-              <md-table-cell v-bind:md-label="$t('withdraw.table.status')">
-                {{ item.status }}
+              <md-table-cell
+                v-bind:md-label="$t('transaction.table.description')"
+              >
+                {{ item.description }}
               </md-table-cell>
-              <md-table-cell v-bind:md-label="$t('withdraw.table.date')">
+              <md-table-cell v-bind:md-label="$t('transaction.table.date')">
                 {{ item.updated_at }}
               </md-table-cell>
             </md-table-row>
@@ -77,7 +74,6 @@
 <script>
 import api from "@/api.js";
 import { Pagination } from "@/components";
-import users from "./Tables/users";
 
 export default {
   components: {
@@ -107,7 +103,6 @@ export default {
   },
   data() {
     return {
-      data: null,
       currentSort: "name",
       currentSortOrder: "asc",
       pagination: {
@@ -131,7 +126,7 @@ export default {
     },
   },
   mounted() {
-    api.get("/api/v1/withdraw/list/").then((response) => {
+    api.get("/api/v1/transaction/user/list/").then((response) => {
       this.tableData = response.data;
     });
   },

@@ -1,6 +1,6 @@
 <template>
   <ValidationObserver ref="form">
-    <form @submit.prevent="validate">
+    <form>
       <div>
         <h5 class="info-text">
           Please enter the email address of the person who invited you to our

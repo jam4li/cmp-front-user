@@ -54,7 +54,7 @@ export default {
   methods: {
     submitForm() {
       api
-        .post("api/v1/exchange/create/", {
+        .post("api/v1/exchange/user/create/", {
           parent_email: this.email,
         })
         .then((response) => {

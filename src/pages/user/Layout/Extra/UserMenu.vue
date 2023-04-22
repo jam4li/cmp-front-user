@@ -66,7 +66,7 @@ export default {
   methods: {
     async fetchData() {
       try {
-        const response = await api.get("/api/v1/user/detail/"); // Replace with your API endpoint
+        const response = await api.get("/api/v1/user/user/detail/"); // Replace with your API endpoint
         this.data = response.data;
       } catch (error) {
         console.error("Error fetching posts:", error);

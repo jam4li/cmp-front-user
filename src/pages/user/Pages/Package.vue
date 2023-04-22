@@ -50,7 +50,7 @@ export default {
   methods: {
     async fetchPackages() {
       try {
-        const response = await api.get("/api/v1/package/list/"); // Replace with your API endpoint
+        const response = await api.get("/api/v1/package/user/list/"); // Replace with your API endpoint
         this.packages = response.data;
       } catch (error) {
         console.error("Error fetching posts:", error);

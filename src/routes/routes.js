@@ -4,58 +4,58 @@ import Router from "vue-router";
 
 import logger from "@/logger.js";
 
-import DashboardLayout from "@/pages/Dashboard/Layout/DashboardLayout.vue";
-import AuthLayout from "@/pages/Dashboard/Pages/AuthLayout.vue";
+import DashboardLayout from "@/pages/user/Layout/DashboardLayout.vue";
+import AuthLayout from "@/pages/user/Pages/AuthLayout.vue";
 
 // Dashboard pages
-import Dashboard from "@/pages/Dashboard/Dashboard.vue";
+import Dashboard from "@/pages/user/Dashboard.vue";
 
 // Pages
-import User from "@/pages/Dashboard/Pages/UserProfile.vue";
-import Roadmap from "@/pages/Dashboard/Pages/Roadmap.vue";
-import Login from "@/pages/Dashboard/Pages/Login.vue";
-import Package from "@/pages/Dashboard/Pages/Package.vue";
-import PageNotFound from "@/pages/Dashboard/Pages/PageNotFound.vue";
+import User from "@/pages/user/Pages/UserProfile.vue";
+import Roadmap from "@/pages/user/Pages/Roadmap.vue";
+import Login from "@/pages/user/Pages/Login.vue";
+import Package from "@/pages/user/Pages/Package.vue";
+import PageNotFound from "@/pages/user/Pages/PageNotFound.vue";
 
 // Components pages
-import Buttons from "@/pages/Dashboard/Components/Buttons.vue";
-import GridSystem from "@/pages/Dashboard/Components/GridSystem.vue";
-import Panels from "@/pages/Dashboard/Components/Panels.vue";
-import SweetAlert from "@/pages/Dashboard/Components/SweetAlert.vue";
-import Notifications from "@/pages/Dashboard/Components/Notifications.vue";
-import Icons from "@/pages/Dashboard/Components/Icons.vue";
-import Typography from "@/pages/Dashboard/Components/Typography.vue";
+import Buttons from "@/pages/user/Components/Buttons.vue";
+import GridSystem from "@/pages/user/Components/GridSystem.vue";
+import Panels from "@/pages/user/Components/Panels.vue";
+import SweetAlert from "@/pages/user/Components/SweetAlert.vue";
+import Notifications from "@/pages/user/Components/Notifications.vue";
+import Icons from "@/pages/user/Components/Icons.vue";
+import Typography from "@/pages/user/Components/Typography.vue";
 
 // Forms pages
-import RegularForms from "@/pages/Dashboard/Forms/RegularForms.vue";
-import ExtendedForms from "@/pages/Dashboard/Forms/ExtendedForms.vue";
-import ValidationForms from "@/pages/Dashboard/Forms/ValidationForms.vue";
-import TicketForm from "@/pages/Dashboard/Forms/TicketForm.vue";
-import Wizard from "@/pages/Dashboard/Forms/Wizard.vue";
+import RegularForms from "@/pages/user/Forms/RegularForms.vue";
+import ExtendedForms from "@/pages/user/Forms/ExtendedForms.vue";
+import ValidationForms from "@/pages/user/Forms/ValidationForms.vue";
+import TicketForm from "@/pages/user/Forms/TicketForm.vue";
+import Wizard from "@/pages/user/Forms/Wizard.vue";
 
 // TableList pages
-import RegularTables from "@/pages/Dashboard/Tables/RegularTables.vue";
-import ExtendedTables from "@/pages/Dashboard/Tables/ExtendedTables.vue";
-import PaginatedTables from "@/pages/Dashboard/Tables/PaginatedTables.vue";
-import Withdraw from "@/pages/Dashboard/Withdraw.vue";
-import Transaction from "@/pages/Dashboard/Transaction.vue";
+import RegularTables from "@/pages/user/Tables/RegularTables.vue";
+import ExtendedTables from "@/pages/user/Tables/ExtendedTables.vue";
+import PaginatedTables from "@/pages/user/Tables/PaginatedTables.vue";
+import Withdraw from "@/pages/user/Withdraw.vue";
+import Transaction from "@/pages/user/Transaction.vue";
 
 // Maps pages
-import GoogleMaps from "@/pages/Dashboard/Maps/GoogleMaps.vue";
-import FullScreenMap from "@/pages/Dashboard/Maps/FullScreenMap.vue";
-import VectorMaps from "@/pages/Dashboard/Maps/VectorMaps.vue";
+import GoogleMaps from "@/pages/user/Maps/GoogleMaps.vue";
+import FullScreenMap from "@/pages/user/Maps/FullScreenMap.vue";
+import VectorMaps from "@/pages/user/Maps/VectorMaps.vue";
 
 // Calendar
-import Calendar from "@/pages/Dashboard/Calendar.vue";
+import Calendar from "@/pages/user/Calendar.vue";
 // Charts
-import Charts from "@/pages/Dashboard/Charts.vue";
-import Widgets from "@/pages/Dashboard/Widgets.vue";
+import Charts from "@/pages/user/Charts.vue";
+import Widgets from "@/pages/user/Widgets.vue";
 
-import Invest from "@/pages/Dashboard/Invest.vue";
-import Support from "@/pages/Dashboard/Support.vue";
-import Authentication from "@/pages/Dashboard/Authentication.vue";
-import Network from "@/pages/Dashboard/Network.vue";
-import Wallet from "@/pages/Dashboard/Wallet.vue";
+import Invest from "@/pages/user/Invest.vue";
+import Support from "@/pages/user/Support.vue";
+import Authentication from "@/pages/user/Authentication.vue";
+import Network from "@/pages/user/Network.vue";
+import Wallet from "@/pages/user/Wallet.vue";
 
 Vue.use(Router);
 
