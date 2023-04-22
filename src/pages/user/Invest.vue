@@ -74,9 +74,17 @@ export default {
     async fetchInvests() {
       try {
         const response = await api.get("/api/v1/invest/user/list/");
-        this.invests = response.data;
+        if (response.data.success) {
+          this.invests = response.data.data;
+        } else {
+          this.notifyVue(response.data.error, "danger", "error_outline");
+        }
       } catch (error) {
-        console.error("Error fetching posts:", error);
+        this.notifyVue(
+          "An error occurred while fetching data",
+          "danger",
+          "error_outline"
+        );
       }
     },
     pieChartData(invest) {

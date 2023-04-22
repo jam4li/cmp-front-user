@@ -90,7 +90,11 @@ export default {
   },
   mounted() {
     api.get("/api/v1/wallet/user/list/").then((response) => {
-      this.tableData = response.data;
+      if (response.data.success) {
+        this.tableData = response.data.data;
+      } else {
+        this.notifyVue(response.data.error, "danger", "error_outline");
+      }
     });
   },
 };

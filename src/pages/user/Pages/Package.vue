@@ -50,10 +50,18 @@ export default {
   methods: {
     async fetchPackages() {
       try {
-        const response = await api.get("/api/v1/package/user/list/"); // Replace with your API endpoint
-        this.packages = response.data;
+        const response = await api.get("/api/v1/package/user/list/");
+        if (response.data.success) {
+          this.packages = response.data.data;
+        } else {
+          this.notifyVue(response.data.error, "danger", "error_outline");
+        }
       } catch (error) {
-        console.error("Error fetching posts:", error);
+        this.notifyVue(
+          "An error occurred while fetching data",
+          "danger",
+          "error_outline"
+        );
       }
     },
   },

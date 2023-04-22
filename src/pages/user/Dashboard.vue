@@ -123,10 +123,12 @@
 import api from "@/api.js";
 import logger from "@/logger.js";
 import Swal from "sweetalert2";
+import notifyMixin from "@/mixins/notifyMixin";
 
 import { StatsCard, AnimatedNumber, AnnouncementCard } from "@/components";
 
 export default {
+  mixins: [notifyMixin],
   components: {
     StatsCard,
     AnimatedNumber,
@@ -154,18 +156,34 @@ export default {
   methods: {
     async fetchAnnouncements() {
       try {
-        const response = await api.get("/api/v1/announcement/user/list/"); // Replace with your API endpoint
-        this.announcements = response.data;
+        const response = await api.get("/api/v1/announcement/user/list/");
+        if (response.data.success) {
+          this.announcements = response.data.data;
+        } else {
+          this.notifyVue(response.data.error, "danger", "error_outline");
+        }
       } catch (error) {
-        logger.error("Error fetching posts:", error);
+        this.notifyVue(
+          "An error occurred while fetching data",
+          "danger",
+          "error_outline"
+        );
       }
     },
     async fetchUserInfo() {
       try {
-        const response = await api.get("/api/v1/user/user/dashboard/"); // Replace with your API endpoint
-        this.userInfo = response.data;
+        const response = await api.get("/api/v1/user/user/dashboard/");
+        if (response.data.success) {
+          this.userInfo = response.data.data;
+        } else {
+          this.notifyVue(response.data.error, "danger", "error_outline");
+        }
       } catch (error) {
-        logger.error("Error fetching posts:", error);
+        this.notifyVue(
+          "An error occurred while fetching data",
+          "danger",
+          "error_outline"
+        );
       }
     },
     async showSwial() {

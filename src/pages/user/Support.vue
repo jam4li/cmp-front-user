@@ -234,7 +234,11 @@ export default {
       threshold: 0.3,
     });
     api.get("/api/v1/support/user/ticket/list/").then((response) => {
-      this.tableData = response.data;
+      if (response.data.success) {
+        this.tableData = response.data.data;
+      } else {
+        this.notifyVue(response.data.error, "danger", "error_outline");
+      }
     });
   },
   watch: {
