@@ -1,7 +1,15 @@
 <template>
   <div class="md-layout">
     <div class="md-layout-item">
-      <signup-card>
+      <div v-if="loading" class="spinner-container">
+        <md-progress-spinner
+          :md-diameter="40"
+          :md-stroke="4"
+          md-mode="indeterminate"
+        >
+        </md-progress-spinner>
+      </div>
+      <signup-card v-else>
         <h2 class="title text-center" slot="title">Terms And Conditions</h2>
         <div
           class="md-layout-item md-size-100 md-medium-size-100 md-small-size-100 ml-auto"
@@ -51,6 +59,7 @@ export default {
   },
   methods: {
     redirectToGmailLogin() {
+      this.loading = true;
       api
         .get("/api/v1/auth/user/google-url")
         .then((response) => {
@@ -58,11 +67,16 @@ export default {
         })
         .catch((error) => {
           logger.log(error);
+          this.loading = false;
         });
     },
   },
+  mounted() {
+    this.loading = false;
+  },
   data() {
     return {
+      loading: false,
       boolean: false,
       contentLeft: [
         {
@@ -135,4 +149,12 @@ export default {
   },
 };
 </script>
-<style></style>
+<style>
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+</style>
