@@ -41,8 +41,10 @@
 <script>
 import api from "@/api.js";
 import { Tabs } from "@/components";
+import notifyMixin from "@/mixins/notifyMixin";
 
 export default {
+  mixins: [notifyMixin],
   components: {
     Tabs,
   },
@@ -60,16 +62,19 @@ export default {
         .then((response) => {
           if (response.data.success) {
             this.$emit("emailSubmitted", response.data);
-            alert(response.data.message);
+            this.notifyVue(response.data.message, "success", "error_outline");
             // Reset the form
             this.email = "";
           } else {
-            alert(response.data);
+            this.notifyVue(
+              response.data.error.message,
+              "danger",
+              "error_outline"
+            );
           }
         })
         .catch((error) => {
-          console.error("Error submitting form:", error);
-          alert("Error submitting form. Please try again.");
+          this.notifyVue(error, "danger", "error_outline");
         });
     },
   },

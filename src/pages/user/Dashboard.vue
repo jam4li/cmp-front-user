@@ -17,7 +17,7 @@
         <template slot="footer">
           <div class="stats">
             <md-icon>info</md-icon>
-            <a href="#">{{ $t("dashboard.moreInfo") }}</a>
+            <a href="invest/">{{ $t("dashboard.moreInfo") }}</a>
           </div>
         </template>
       </stats-card>
@@ -57,7 +57,7 @@
         <template slot="footer">
           <div class="stats">
             <md-icon>add_circle</md-icon>
-            <a href="#">{{ $t("dashboard.addDirectInvites") }}</a>
+            <a href="direct/">{{ $t("dashboard.addDirectInvites") }}</a>
           </div>
         </template>
       </stats-card>
@@ -77,7 +77,7 @@
         <template slot="footer">
           <div class="stats">
             <md-icon>info</md-icon>
-            <a href="#">{{ $t("dashboard.moreInfo") }}</a>
+            <a href="binary/">{{ $t("dashboard.moreInfo") }}</a>
           </div>
         </template>
       </stats-card>

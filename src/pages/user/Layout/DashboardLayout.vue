@@ -27,6 +27,18 @@
               path: '/pages/rtl',
             }"
           ></sidebar-item>
+          <sidebar-item
+            :link="{
+              name: $t('sidebar.direct'),
+              path: '/direct',
+            }"
+          ></sidebar-item>
+          <sidebar-item
+            :link="{
+              name: $t('sidebar.binary'),
+              path: '/binary',
+            }"
+          ></sidebar-item>
         </sidebar-item>
         <sidebar-item :link="{ name: $t('sidebar.accounting'), icon: 'paid' }">
           <sidebar-item

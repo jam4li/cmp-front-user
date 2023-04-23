@@ -4,6 +4,8 @@ export default {
     network: "Network",
     myNetwork: "My Network",
     networkAccounting: "Network Accounting",
+    direct: "Direct",
+    binary: "Binary",
     accounting: "Accounting",
     company: "Company",
     roadmap: "Roadmap",
@@ -89,5 +91,17 @@ export default {
     title: "Support And Ticket",
     subtitle:
       "Get help with your questions and issues by submitting a support ticket.",
+  },
+  direct: {
+    title: "Direct Referral Invitations",
+    subtitle:
+      "Explore and manage your direct referral invitations and boost your earnings by growing your referral network.",
+    table: {
+      title: "Email",
+    },
+  },
+  binary: {
+    title: "Binary Referral Invitations",
+    subtitle: "Keep track of your binary referral invitations.",
   },
 };

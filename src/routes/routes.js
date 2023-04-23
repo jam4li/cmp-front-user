@@ -56,6 +56,8 @@ import Support from "@/pages/user/Support.vue";
 import Authentication from "@/pages/user/Authentication.vue";
 import Network from "@/pages/user/Network.vue";
 import Wallet from "@/pages/user/Wallet.vue";
+import Direct from "@/pages/user/Direct.vue";
+import Binary from "@/pages/user/Binary.vue";
 
 Vue.use(Router);
 
@@ -304,6 +306,16 @@ const routes = [
         path: "wallet",
         name: "Wallet",
         components: { default: Wallet },
+      },
+      {
+        path: "direct",
+        name: "Direct",
+        components: { default: Direct },
+      },
+      {
+        path: "binary",
+        name: "Binary",
+        components: { default: Binary },
       },
       {
         path: "package",
