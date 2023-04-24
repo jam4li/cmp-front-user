@@ -86,6 +86,15 @@ export default {
     title: "Authentication",
     subtitle:
       "This will help us verify your invitation and grant you access to the appropriate features.",
+    pending: {
+      title: "Pending Users",
+    },
+    accepted: {
+      title: "Accepted Users",
+    },
+    rejected: {
+      title: "Rejected Users",
+    },
   },
   support: {
     title: "Support And Ticket",

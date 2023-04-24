@@ -1,45 +1,108 @@
 <template>
-  <div class="md-layout">
-    <div class="md-layout-item md-size-100 md-medium-size-100">
-      <tabs
-        :tab-name="['Email', 'Pending', 'Accepted', 'Rejected']"
-        color-button="info"
-      >
-        <h4 class="title" slot="header-title">
-          {{ $t("authentication.title") }} -
-          <small class="description">{{ $t("authentication.subtitle") }}</small>
-        </h4>
+  <div>
+    <div class="header text-center">
+      <h3 class="title">{{ $t("authentication.title") }}</h3>
+      <p class="category">
+        {{ $t("authentication.subtitle") }}
+      </p>
+      <h6 class="category text-success" v-if="status === 'accepted'">
+        <md-icon class="text-success">verified_user</md-icon>
+        Congratulations! Your request has been accepted by
+        {{ parentInfo.parent }}
+      </h6>
+      <h6 class="category text-info" v-else-if="status === 'pending'">
+        <md-icon class="text-info">hourglass_empty</md-icon>
+        Your request is awaiting approval from
+        {{ parentInfo.parent }}
+      </h6>
+      <p class="category text-danger" v-else-if="status === 'rejected'">
+        <md-icon class="text-danger">cancel</md-icon>
+        Your request is awaiting approval from
+        {{ parentInfo.parent }}
+      </p>
+    </div>
 
-        <!-- here you can add your content for tab-content -->
-        <template slot="tab-pane-1">
-          <div v-if="status === 'accepted'">
-            <h6>
-              <md-icon>verified_user</md-icon>
-              Congratulations! Your request has been accepted by
-              {{ parentInfo.parent }}
-            </h6>
-          </div>
-          <div v-else-if="status === 'pending'">
-            <h6>
+    <div class="md-layout" v-if="status === 'accepted'">
+      <div class="md-layout-item">
+        <md-card>
+          <md-card-header class="md-card-header-icon md-card-header-green">
+            <div class="card-icon">
               <md-icon>pending</md-icon>
-              Your request is awaiting approval from
-              {{ parentInfo.parent }}
-            </h6>
-          </div>
-          <div v-else>
-            <div v-if="status === 'rejected'">
-              <h6>
-                <md-icon>error</md-icon>
-                Unfortunately, your request has been rejected by
-                {{ parentInfo.parent }}
-              </h6>
             </div>
+            <h4 class="title">{{ $t("authentication.pending.title") }}</h4>
+          </md-card-header>
+          <md-card-content>
+            <md-table v-model="pendingTable" table-header-color="green">
+              <md-table-row slot="md-table-row" slot-scope="{ item }">
+                <md-table-cell md-label="Email">{{ item.email }}</md-table-cell>
+                <md-table-cell md-label="Actions">
+                  <md-button class="md-success md-just-icon md-round"
+                    ><md-icon>check</md-icon></md-button
+                  >
+                  <md-button class="md-danger md-just-icon md-round"
+                    ><md-icon>close</md-icon></md-button
+                  >
+                </md-table-cell>
+              </md-table-row>
+            </md-table>
+          </md-card-content>
+        </md-card>
+
+        <md-card>
+          <md-card-header class="md-card-header-icon md-card-header-green">
+            <div class="card-icon">
+              <md-icon>verified_user</md-icon>
+            </div>
+            <h4 class="title">{{ $t("authentication.accepted.title") }}</h4>
+          </md-card-header>
+          <md-card-content>
+            <md-table v-model="acceptedTable" table-header-color="green">
+              <md-table-row slot="md-table-row" slot-scope="{ item }">
+                <md-table-cell md-label="Email">{{ item.email }}</md-table-cell>
+                <md-table-cell md-label="Actions">
+                  <md-button class="md-danger md-just-icon md-round"
+                    ><md-icon>close</md-icon></md-button
+                  >
+                </md-table-cell>
+              </md-table-row>
+            </md-table>
+          </md-card-content>
+        </md-card>
+
+        <md-card>
+          <md-card-header class="md-card-header-icon md-card-header-green">
+            <div class="card-icon">
+              <md-icon>error</md-icon>
+            </div>
+            <h4 class="title">{{ $t("authentication.rejected.title") }}</h4>
+          </md-card-header>
+          <md-card-content>
+            <md-table v-model="rejectedTable" table-header-color="green">
+              <md-table-row slot="md-table-row" slot-scope="{ item }">
+                <md-table-cell md-label="Email">{{ item.email }}</md-table-cell>
+              </md-table-row>
+            </md-table>
+          </md-card-content>
+        </md-card>
+      </div>
+    </div>
+
+    <div class="md-layout" v-else-if="status === 'rejected' || status === null">
+      <div class="md-layout-item">
+        <md-card>
+          <md-card-header class="md-card-header-icon md-card-header-green">
+            <div class="card-icon">
+              <md-icon>list_alt</md-icon>
+            </div>
+            <h4 class="title">Email Submission</h4>
+          </md-card-header>
+          <md-card-content>
             <form class="form-horizontal" @submit.prevent="submitForm">
               <div class="md-layout">
                 <label class="md-layout-item md-size-25 md-form-label">
                   Email
                 </label>
-                <div class="md-layout-item md-size-75">
+                <div class="md-layout-item md-size-50">
                   <md-field>
                     <label>Enter Email</label>
                     <md-input v-model="email" type="email"></md-input>
@@ -51,28 +114,25 @@
                 <md-button type="submit" class="md-success">Submit</md-button>
               </md-card-actions>
             </form>
-          </div>
-        </template>
-
-        <template slot="tab-pane-2"> </template>
-
-        <template slot="tab-pane-3"> </template>
-      </tabs>
+          </md-card-content>
+        </md-card>
+      </div>
     </div>
   </div>
 </template>
+
 <script>
 import api from "@/api.js";
-import { Tabs } from "@/components";
 import notifyMixin from "@/mixins/notifyMixin";
 
 export default {
   mixins: [notifyMixin],
-  components: {
-    Tabs,
-  },
+  components: {},
   data() {
     return {
+      pendingTable: [],
+      acceptedTable: [],
+      rejectedTable: [],
       email: "",
       status: null,
       parentInfo: null,
@@ -89,6 +149,9 @@ export default {
           this.parentInfo = response.data.data;
           if (this.parentInfo.status) {
             this.status = this.parentInfo.status;
+            this.pendingTable = this.parentInfo.pending_users;
+            this.acceptedTable = this.parentInfo.accepted_users;
+            this.rejectedTable = this.parentInfo.rejected_users;
           }
         } else {
           this.notifyVue(response.data.error, "danger", "error_outline");
@@ -127,3 +190,16 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.text-center {
+  text-align: center;
+}
+.category {
+  margin: 10px;
+}
+
+.md-card-actions .md-layout-item {
+  padding: 0;
+}
+</style>
