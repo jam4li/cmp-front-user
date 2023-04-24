@@ -36,11 +36,17 @@
               <md-table-row slot="md-table-row" slot-scope="{ item }">
                 <md-table-cell md-label="Email">{{ item.email }}</md-table-cell>
                 <md-table-cell md-label="Actions">
-                  <md-button class="md-success md-just-icon md-round"
-                    ><md-icon>check</md-icon></md-button
+                  <md-button
+                    class="md-success md-just-icon md-round"
+                    @click="modifyUser(item.accept_url)"
                   >
-                  <md-button class="md-danger md-just-icon md-round"
-                    ><md-icon>close</md-icon></md-button
+                    <md-icon>check</md-icon></md-button
+                  >
+                  <md-button
+                    class="md-danger md-just-icon md-round"
+                    @click="modifyUser(item.reject_url)"
+                  >
+                    <md-icon>close</md-icon></md-button
                   >
                 </md-table-cell>
               </md-table-row>
@@ -60,8 +66,11 @@
               <md-table-row slot="md-table-row" slot-scope="{ item }">
                 <md-table-cell md-label="Email">{{ item.email }}</md-table-cell>
                 <md-table-cell md-label="Actions">
-                  <md-button class="md-danger md-just-icon md-round"
-                    ><md-icon>close</md-icon></md-button
+                  <md-button
+                    class="md-danger md-just-icon md-round"
+                    @click="modifyUser(item.reject_url)"
+                  >
+                    <md-icon>close</md-icon></md-button
                   >
                 </md-table-cell>
               </md-table-row>
@@ -164,6 +173,20 @@ export default {
         );
       }
     },
+    async modifyUser(url) {
+      try {
+        const response = await api.get(url).then((response) => {
+          window.location.reload();
+          this.notifyVue(response.data.status, "info", "error_outline");
+        });
+      } catch (error) {
+        this.notifyVue(
+          "An error occurred while fetching data",
+          "danger",
+          "error_outline"
+        );
+      }
+    },
     submitForm() {
       api
         .post("api/v1/exchange/user/create/", {
@@ -201,5 +224,9 @@ export default {
 
 .md-card-actions .md-layout-item {
   padding: 0;
+}
+
+.md-just-icon {
+  margin: 0 15px 0 0;
 }
 </style>
