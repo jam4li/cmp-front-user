@@ -1,11 +1,5 @@
 <template>
   <md-card class="md-card-testimonial">
-    <md-card-header class="icon">
-      <md-icon>
-        <slot name="header-icon"></slot>
-      </md-icon>
-    </md-card-header>
-
     <md-card-content>
       <slot name="content"></slot>
     </md-card-content>

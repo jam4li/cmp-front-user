@@ -16,6 +16,7 @@ import InvestCard from "./Cards/InvestCard.vue";
 import AnnouncementCard from "./Cards/AnnouncementCard.vue";
 import NavTabsCard from "./Cards/NavTabsCard.vue";
 import ProductCard from "./Cards/ProductCard.vue";
+import TestimonialCard from "./Cards/TestimonialCard.vue";
 
 import TimeLine from "./Timeline/TimeLine.vue";
 import TimeLineItem from "./Timeline/TimeLineItem.vue";
@@ -48,6 +49,7 @@ export {
   ProductCard,
   DropDown,
   SidebarPlugin,
+  TestimonialCard,
   TimeLine,
   TimeLineItem,
   Tabs,

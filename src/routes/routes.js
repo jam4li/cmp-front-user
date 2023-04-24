@@ -38,6 +38,7 @@ import RegularTables from "@/pages/user/Tables/RegularTables.vue";
 import ExtendedTables from "@/pages/user/Tables/ExtendedTables.vue";
 import PaginatedTables from "@/pages/user/Tables/PaginatedTables.vue";
 import Withdraw from "@/pages/user/Withdraw.vue";
+import TicketDetail from "@/pages/user/TicketDetail.vue";
 import Transaction from "@/pages/user/Transaction.vue";
 
 // Maps pages
@@ -233,6 +234,11 @@ let support = {
       path: "list",
       name: "Ticket List",
       components: { default: Support },
+    },
+    {
+      path: "detail",
+      name: "Ticket Detail",
+      components: { default: TicketDetail },
     },
   ],
 };
