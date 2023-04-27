@@ -77,6 +77,9 @@ export default {
   wallet: {
     title: "Wallets and Balances",
     subtitle: "Keep track of your cryptocurrency balances with ease.",
+    table: {
+      title: "Wallet List",
+    },
   },
   package: {
     title: "List of Packages",
