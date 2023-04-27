@@ -1,134 +1,79 @@
 <template>
-  <div class="md-layout">
-    <div class="md-layout-item md-medium-size-50 md-xsmall-size-100 md-size-25">
-      <stats-card header-color="blue">
-        <template slot="header">
-          <div class="card-icon">
-            <md-icon>shopping_cart</md-icon>
-          </div>
-          <p class="category">{{ $t("dashboard.activePackages") }}</p>
-          <h3 class="title">
-            <animated-number
-              :value="userInfo.active_packages"
-            ></animated-number>
-          </h3>
-        </template>
+  <v-card theme="dark">
+    <v-layout>
+      <v-navigation-drawer
+        v-model="drawer"
+        :rail="rail"
+        permanent
+        @click="rail = false"
+      >
+        <v-list-item
+          prepend-avatar="https://randomuser.me/api/portraits/men/85.jpg"
+          title="Hossein Jamali"
+          nav
+        >
+          <template v-slot:append>
+            <v-btn
+              variant="text"
+              icon="mdi-chevron-left"
+              @click.stop="rail = !rail"
+            ></v-btn>
+          </template>
+        </v-list-item>
 
-        <template slot="footer">
-          <div class="stats">
-            <md-icon>info</md-icon>
-            <a href="invest/">{{ $t("dashboard.moreInfo") }}</a>
-          </div>
-        </template>
-      </stats-card>
-    </div>
-    <div class="md-layout-item md-medium-size-50 md-xsmall-size-100 md-size-25">
-      <stats-card header-color="rose">
-        <template slot="header">
-          <div class="card-icon">
-            <md-icon>account_balance_wallet</md-icon>
-          </div>
-          <p class="category">{{ $t("dashboard.balance") }}</p>
-          <h3 class="title">
-            $ <animated-number :value="userInfo.balance"></animated-number>
-          </h3>
-        </template>
+        <v-divider></v-divider>
 
-        <template slot="footer">
-          <div class="stats">
-            <md-icon>local_offer</md-icon>
-            <a href="wallet/">{{ $t("dashboard.allWallets") }}</a>
-          </div>
-        </template>
-      </stats-card>
-    </div>
-    <div class="md-layout-item md-medium-size-50 md-xsmall-size-100 md-size-25">
-      <stats-card header-color="green">
-        <template slot="header">
-          <div class="card-icon">
-            <md-icon>person_add</md-icon>
-          </div>
-          <p class="category">{{ $t("dashboard.directInvited") }}</p>
-          <h3 class="title">
-            <animated-number :value="userInfo.direct_invited"></animated-number>
-          </h3>
-        </template>
-
-        <template slot="footer">
-          <div class="stats">
-            <md-icon>add_circle</md-icon>
-            <a href="direct/">{{ $t("dashboard.addDirectInvites") }}</a>
-          </div>
-        </template>
-      </stats-card>
-    </div>
-    <div class="md-layout-item md-medium-size-50 md-xsmall-size-100 md-size-25">
-      <stats-card header-color="warning">
-        <template slot="header">
-          <div class="card-icon">
-            <md-icon>groups</md-icon>
-          </div>
-          <p class="category">{{ $t("dashboard.yourTeam") }}</p>
-          <h3 class="title">
-            <animated-number :value="userInfo.team"></animated-number>
-          </h3>
-        </template>
-
-        <template slot="footer">
-          <div class="stats">
-            <md-icon>info</md-icon>
-            <a href="binary/">{{ $t("dashboard.moreInfo") }}</a>
-          </div>
-        </template>
-      </stats-card>
-    </div>
-    <div class="md-layout-item md-size-100">
-      <announcement-card header-color="green">
-        <template slot="header">
-          <div class="card-icon">
-            <md-icon>campaign</md-icon>
-          </div>
-          <h4 class="title">{{ $t("dashboard.announcements") }}</h4>
-        </template>
-
-        <template slot="content">
-          <div class="md-layout">
-            <div class="md-layout-item md-size-100">
-              <div class="swiper-container">
-                <swiper :options="swiperOptions">
-                  <!-- Slides -->
-                  <swiper-slide
-                    v-for="announcement in announcements"
-                    :key="announcement.id"
-                  >
-                    <div class="slide-content">
-                      <img v-bind:src="announcement.image" alt="Image 1" />
-                      <div class="slide-text">{{ announcement.title }}</div>
-                    </div>
-                  </swiper-slide>
-
-                  <!-- Add Pagination -->
-                  <div class="swiper-pagination" slot="pagination"></div>
-                </swiper>
-              </div>
-            </div>
-          </div>
-        </template>
-      </announcement-card>
-    </div>
-  </div>
+        <v-list density="compact" nav>
+          <v-list-item
+            prepend-icon="mdi-view-dashboard"
+            title="Dashboard"
+            value="home"
+          ></v-list-item>
+          <v-list-item
+            prepend-icon="mdi-lan"
+            title="Network"
+            value="network"
+          ></v-list-item>
+          <v-list-item
+            prepend-icon="mdi-account-group-outline"
+            title="Accounting"
+            value="accounting"
+          ></v-list-item>
+          <v-list-item
+            prepend-icon="mdi-account-group-outline"
+            title="Company"
+            value="company"
+          ></v-list-item>
+          <v-list-item
+            prepend-icon="mdi-account-group-outline"
+            title="Wallet"
+            value="wallet"
+          ></v-list-item>
+          <v-list-item
+            prepend-icon="mdi-account-group-outline"
+            title="Package"
+            value="package"
+          ></v-list-item>
+          <v-list-item
+            prepend-icon="mdi-logout"
+            title="Logout"
+            value="logout"
+          ></v-list-item>
+        </v-list>
+      </v-navigation-drawer>
+      <v-main style="height: 250px"></v-main>
+    </v-layout>
+  </v-card>
 </template>
 
 <script>
-import api from "@/api.js";
-import logger from "@/logger.js";
+import api from "@/api";
+import logger from "@/logger";
 import Swal from "sweetalert2";
-import notifyMixin from "@/mixins/notifyMixin";
 
 import { StatsCard, AnimatedNumber, AnnouncementCard } from "@/components";
 
 export default {
-  mixins: [notifyMixin],
   components: {
     StatsCard,
     AnimatedNumber,
@@ -136,6 +81,13 @@ export default {
   },
   data() {
     return {
+      drawer: true,
+      items: [
+        { title: "Home", icon: "mdi-home-city" },
+        { title: "My Account", icon: "mdi-account" },
+        { title: "Users", icon: "mdi-account-group-outline" },
+      ],
+      rail: true,
       userInfo: null,
       announcements: [],
       swiperOptions: {

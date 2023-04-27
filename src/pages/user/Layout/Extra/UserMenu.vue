@@ -48,7 +48,7 @@
 <script>
 import { CollapseTransition } from "vue2-transitions";
 
-import api from "@/api.js";
+import api from "@/api";
 
 export default {
   components: {
