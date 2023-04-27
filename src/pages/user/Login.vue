@@ -1,62 +1,49 @@
 <template>
-  <div class="md-layout">
-    <div class="md-layout-item">
-      <div v-if="loading" class="spinner-container">
-        <md-progress-spinner
-          :md-diameter="40"
-          :md-stroke="4"
-          md-mode="indeterminate"
-        >
-        </md-progress-spinner>
-      </div>
-      <signup-card v-else>
-        <h2 class="title text-center" slot="title">Terms And Conditions</h2>
-        <div
-          class="md-layout-item md-size-100 md-medium-size-100 md-small-size-100 ml-auto"
-          slot="content-left"
-        >
-          <div class="scrollable-section">
-            <div
-              class="info info-horizontal"
-              v-for="item in contentLeft"
-              :key="item.title"
-            >
-              <div :class="`icon ${item.colorIcon}`">
-                <md-icon>{{ item.icon }}</md-icon>
-              </div>
-              <div class="description">
-                <h4 class="info-title">{{ item.title }}</h4>
+  <v-container fluid class="bg-custom">
+    <v-row justify="center" class="d-flex">
+      <v-col cols="12" md="10" lg="8" xl="6">
+        <v-card theme="dark">
+          <v-card-title class="text-center"> Terms And Conditions</v-card-title>
+          <v-divider></v-divider>
+          <v-card-text>
+            <v-virtual-scroll :height="300" :items="rules" class="pa-5">
+              <template v-slot:default="{ item }">
+                <h3>{{ item.title }}</h3>
                 <p class="description">
                   {{ item.description }}
                 </p>
-              </div>
-            </div>
-          </div>
-          <md-checkbox v-model="boolean"
-            >I agree to the <a>Terms And Conditions</a>.</md-checkbox
-          >
-          <div class="button-container">
-            <md-button
-              class="md-success md-round mt-4"
-              slot="footer"
-              @click="redirectToGmailLogin"
-              >Get Started</md-button
+                <br />
+              </template>
+            </v-virtual-scroll>
+            <v-checkbox v-model="checkbox" color="success">
+              <template v-slot:label>
+                <div>I agree to the Terms And Conditions.</div>
+              </template>
+            </v-checkbox>
+          </v-card-text>
+          <v-card-actions>
+            <v-btn
+              :disabled="loading"
+              :loading="loading"
+              class="text-none mb-4"
+              color="success"
+              size="x-large"
+              variant="flat"
+              @click="loading = !loading"
             >
-          </div>
-        </div>
-      </signup-card>
-    </div>
-  </div>
+              Get Started
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 <script>
-import api from "@/api.js";
-import { SignupCard } from "@/components";
-import logger from "@/logger.js";
-
+import api from "@/api";
+import logger from "@/logger";
 export default {
-  components: {
-    SignupCard,
-  },
+  components: {},
   methods: {
     redirectToGmailLogin() {
       this.loading = true;
@@ -74,11 +61,19 @@ export default {
   mounted() {
     this.loading = false;
   },
+  watch: {
+    loading(val) {
+      if (!val) return;
+
+      setTimeout(() => (this.loading = false), 2000);
+    },
+  },
   data() {
     return {
       loading: false,
       boolean: false,
-      contentLeft: [
+      checkbox: false,
+      rules: [
         {
           colorIcon: "icon-info",
           icon: "feed",
@@ -86,7 +81,6 @@ export default {
           description:
             "1.1. To register on the company website and become an investor, one must be at least 18 years of age at the time of registration. 1.2 The user automatically receives the investor status immediately after registering on the website and accepting all the terms of the agreement, and invests at his own discretion. 1.3 If the User disagrees with any of the provisions of this Agreement or is in doubt about certain matters - the registration must be terminated. And if he invests or does what he wants. 1.4. All financial transactions made through the Company's Website are confidential and will not be disclosed to third parties. An investor is only given the opportunity to make financial transactions and use other services of the company after registering on the website.",
         },
-
         {
           colorIcon: "icon-info",
           icon: "apartment",
@@ -94,7 +88,6 @@ export default {
           description:
             "2.1. The company is committed to using investor funds for its intended purpose and to drive real activity in the Forex market. Do the robot and wherever he likes. 2.2. The company guarantees investor budget security for the profits it owns and commits to timely depositing and withdrawing profits, except in exceptional cases. Corporate profit is 0.5 to 1%. 2.3 The Company is not responsible for any technical defects in electronic payment systems. Financial transactions associated with depositing and withdrawing funds into electronic payment systems account are irreversible and final. 2.4 Cloudminepro does not assume responsibility for incorrect transactions with funds and inaccurate financial accounts. 2.5. The company is responsible for maintaining the confidentiality of personal information provided by the investor.",
         },
-
         {
           colorIcon: "icon-info",
           icon: "contact_page",
@@ -150,6 +143,11 @@ export default {
 };
 </script>
 <style>
+.bg-custom {
+  background: url("../../../public/img/lock.jpg");
+  background-size: cover;
+  height: 100vh;
+}
 .spinner-container {
   display: flex;
   justify-content: center;
