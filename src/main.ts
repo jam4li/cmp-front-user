@@ -1,0 +1,23 @@
+// Import Vue
+import { createApp } from "vue";
+import App from "./App.vue";
+import router from "./router";
+
+// Vuetify
+import 'vuetify/styles'
+import '@mdi/font/css/materialdesignicons.css'
+import { createVuetify } from 'vuetify'
+import * as components from 'vuetify/components'
+import * as directives from 'vuetify/directives'
+import * as labs from 'vuetify/labs/components'
+
+const vuetify = createVuetify({
+    components: { ...components, ...labs },
+    directives,
+    ssr: true,
+})
+
+createApp(App)
+    .use(router)
+    .use(vuetify)
+    .mount('#app')

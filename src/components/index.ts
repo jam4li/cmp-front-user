@@ -8,7 +8,6 @@ import Modal from "./Modal.vue";
 // Tables
 import AnnouncementTable from "./Tables/AnnouncementTable.vue";
 
-import SignupCard from "./Cards/SignupCard.vue";
 import LoginCard from "./Cards/LoginCard.vue";
 import StatsCard from "./Cards/StatsCard.vue";
 import ChartCard from "./Cards/ChartCard.vue";
@@ -39,7 +38,6 @@ export {
   Modal,
   Pagination,
   AnnouncementTable,
-  SignupCard,
   StatsCard,
   LoginCard,
   ChartCard,

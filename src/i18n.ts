@@ -1,20 +1,17 @@
-import Vue from "vue";
-import VueI18n, { LocaleMessages } from "vue-i18n";
-import en from "./lang/en.js"; // Import your English language file
-import tr from "./lang/tr.js"; // Import your Turkish language file
-import ru from "./lang/ru.js"; // Import your Russian language file
-
-Vue.use(VueI18n);
+import { createI18n, LocaleMessages } from 'vue-i18n';
+import en from './lang/en'; // Import your English language file
+import tr from './lang/tr'; // Import your Turkish language file
+import ru from './lang/ru'; // Import your Russian language file
 
 const messages: LocaleMessages = {
-  en: en,
-  tr: tr,
-  ru: ru,
+  en,
+  tr,
+  ru,
 };
 
-const i18n = new VueI18n({
-  locale: "en", // Set the default language
-  fallbackLocale: "en",
+const i18n = createI18n({
+  locale: 'en', // Set the default language
+  fallbackLocale: 'en',
   messages,
 });
 
