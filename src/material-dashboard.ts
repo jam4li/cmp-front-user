@@ -1,3 +1,4 @@
+import Vue from "vue";
 // Notifications plugin. Used on Notifications page
 import Notifications from "@/components/NotificationPlugin";
 // A plugin file where you could register global components used across the app
@@ -18,8 +19,8 @@ import "./assets/css/demo.css";
 // library auto imports
 import "es6-promise/auto";
 
-export default {
-  install(Vue) {
+const plugin = {
+  install(Vue: typeof Vue): void {
     Vue.use(GlobalComponents);
     Vue.use(GlobalDirectives);
     Vue.use(VueMaterial);
@@ -27,3 +28,5 @@ export default {
     Vue.use(Notifications);
   },
 };
+
+export default plugin;

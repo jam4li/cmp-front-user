@@ -1,8 +1,7 @@
-// api.js
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 import Cookies from "js-cookie";
 import dotenv from "dotenv";
-import logger from "@/logger.js";
+import logger from "@/logger";
 
 dotenv.config();
 
@@ -18,7 +17,7 @@ const instance = axios.create({
 
 // Request interceptor
 instance.interceptors.request.use(
-  (config) => {
+  (config: AxiosRequestConfig): AxiosRequestConfig => {
     // Get the token from localStorage
     const token = Cookies.get("authToken");
 

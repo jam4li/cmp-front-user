@@ -1,12 +1,12 @@
 export default {
   methods: {
     notifyVue(
-      message,
-      type,
-      icon,
-      verticalAlign = "top",
-      horizontalAlign = "center"
-    ) {
+      message: string,
+      type: string,
+      icon: string,
+      verticalAlign: string = "top",
+      horizontalAlign: string = "center"
+    ): void {
       this.$notify({
         timeout: 2500,
         message: message,
