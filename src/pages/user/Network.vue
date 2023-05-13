@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import api from "@/api.js";
 import TreeChart from "vue-tree-chart";
 
 export default {
@@ -35,26 +36,23 @@ export default {
   },
   data() {
     return {
-      treeData: {
-        name: "Root",
-        children: [
-          {
-            name: "Child 1",
-          },
-          {
-            name: "Child 2",
-            children: [
-              {
-                name: "Grandchild 1",
-              },
-              {
-                name: "Grandchild 2",
-              },
-            ],
-          },
-        ],
-      },
+      treeData: {},
     };
+  },
+  mounted() {
+    this.fetchTreeData();
+  },
+  methods: {
+    fetchTreeData() {
+      api
+        .get("api/v1/referral/user/network/detail/")
+        .then((response) => {
+          this.treeData = response.data.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
 };
 </script>

@@ -156,7 +156,7 @@ export default {
   methods: {
     async fetchAnnouncements() {
       try {
-        const response = await api.get("/api/v1/announcement/user/list/");
+        const response = await api.get("/api/v1/banner/user/list/");
         if (response.data.success) {
           this.announcements = response.data.data;
         } else {
