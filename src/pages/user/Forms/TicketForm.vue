@@ -135,7 +135,7 @@ export default {
       api
         .get("api/v1/support/user/department/list/")
         .then((response) => {
-          this.departmentList = response.data; // Assuming the API returns an array of movie objects
+          this.departmentList = response.data.data; // Assuming the API returns an array of movie objects
         })
         .catch((error) => {
           console.error("Error fetching movies:", error);
