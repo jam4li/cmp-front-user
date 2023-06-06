@@ -236,7 +236,7 @@ let support = {
       components: { default: Support },
     },
     {
-      path: "detail",
+      path: "detail/:id",
       name: "Ticket Detail",
       components: { default: TicketDetail },
     },

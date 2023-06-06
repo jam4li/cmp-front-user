@@ -12,47 +12,11 @@
       <div
         class="md-layout-item md-small-size-100 md-medium-size-50 md-large-size-50"
       >
-        <testimonial-card>
+        <testimonial-card v-for="item in replyData" :key="item">
           <template slot="content">
             <h5 class="description">
-              Your products, all the kits that I have downloaded from your site
-              and worked with are sooo cool! I love the color mixtures, cards...
-              everything. Keep up the great work!
+              {{ item.content }}
             </h5>
-          </template>
-          <template slot="footer">
-            <h4 class="title">Admin</h4>
-            <div class="avatar">
-              <a href="#pablo">
-                <img class="img" :src="profileCard" />
-              </a>
-            </div>
-          </template>
-        </testimonial-card>
-        <testimonial-card>
-          <template slot="content">
-            <h5 class="description">
-              Your products, all the kits that I have downloaded from your site
-              and worked with are sooo cool! I love the color mixtures, cards...
-              everything. Keep up the great work!
-            </h5>
-          </template>
-        </testimonial-card>
-        <testimonial-card>
-          <template slot="content">
-            <h5 class="description">
-              Your products, all the kits that I have downloaded from your site
-              and worked with are sooo cool! I love the color mixtures, cards...
-              everything. Keep up the great work!
-            </h5>
-          </template>
-          <template slot="footer">
-            <h4 class="title">Admin</h4>
-            <div class="avatar">
-              <a href="#pablo">
-                <img class="img" :src="profileCard" />
-              </a>
-            </div>
           </template>
         </testimonial-card>
       </div>
@@ -95,7 +59,7 @@
 </template>
 
 <script>
-// import api from "@/api.js";
+import api from "@/api.js";
 // import notifyMixin from "@/mixins/notifyMixin";
 import { TestimonialCard } from "@/components";
 
@@ -104,13 +68,28 @@ export default {
     TestimonialCard,
   },
   data() {
-    return {};
+    return {
+      id: null,
+      replyData: [],
+    };
   },
   props: {
     profileCard: {
       type: String,
       default: "https://www.w3schools.com/howto/img_avatar.png",
     },
+  },
+  mounted() {
+    this.id = this.$route.params.id;
+    api
+      .get(`/api/v1/support/user/ticket/detail/${this.id}/`)
+      .then((response) => {
+        if (response.data.success) {
+          this.replyData = response.data.data;
+        } else {
+          this.notifyVue(response.data.error, "danger", "error_outline");
+        }
+      });
   },
 };
 </script>

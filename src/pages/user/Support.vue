@@ -58,7 +58,11 @@
                 </md-field>
               </md-table-toolbar>
 
-              <md-table-row slot="md-table-row" slot-scope="{ item }">
+              <md-table-row
+                @click="ticketDetail(item.id)"
+                slot="md-table-row"
+                slot-scope="{ item }"
+              >
                 <md-table-cell md-label="id" md-sort-by="name">{{
                   item.id
                 }}</md-table-cell>
@@ -168,6 +172,9 @@ export default {
     };
   },
   methods: {
+    ticketDetail(id) {
+      this.$router.push(`/support/detail/${id}`);
+    },
     customSort(value) {
       return value.sort((a, b) => {
         const sortBy = this.currentSort;
