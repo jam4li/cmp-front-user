@@ -40,15 +40,13 @@
                 <div class="md-layout-item md-size-75">
                   <md-field>
                     <label>Enter Description</label>
-                    <md-input v-model="description" type="text"></md-input>
+                    <md-input v-model="reply" type="text"></md-input>
                   </md-field>
                 </div>
               </div>
               <md-card-actions md-alignment="left">
                 <md-button type="submit" class="md-success">Submit</md-button>
-                <md-button @click="createNewTicket" class="md-danger">
-                  Close The Ticket
-                </md-button>
+                <md-button class="md-danger"> Close The Ticket </md-button>
               </md-card-actions>
             </form>
           </md-card-content>
@@ -71,6 +69,7 @@ export default {
     return {
       id: null,
       replyData: [],
+      reply: "",
     };
   },
   props: {
@@ -90,6 +89,28 @@ export default {
           this.notifyVue(response.data.error, "danger", "error_outline");
         }
       });
+  },
+  methods: {
+    submitForm() {
+      api
+        .post(`api/v1/support/user/ticket/detail/${this.id}/`, {
+          reply: this.reply,
+        })
+        .then((response) => {
+          if (response.data.success) {
+            alert(response.data.message);
+            // Reset the form
+            this.reply = "";
+            window.location.reload();
+          } else {
+            alert(response.data.message);
+          }
+        })
+        .catch((error) => {
+          console.error("Error submitting form:", error);
+          alert("Error submitting form. Please try again.");
+        });
+    },
   },
 };
 </script>
