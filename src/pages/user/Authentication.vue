@@ -38,13 +38,13 @@
                 <md-table-cell md-label="Actions">
                   <md-button
                     class="md-success md-just-icon md-round"
-                    @click="modifyUser(item.accept_url)"
+                    @click.native="showSwal('accept', item.accept_url)"
                   >
                     <md-icon>check</md-icon></md-button
                   >
                   <md-button
                     class="md-danger md-just-icon md-round"
-                    @click="modifyUser(item.reject_url)"
+                    @click.native="showSwal('reject', item.reject_url)"
                   >
                     <md-icon>close</md-icon></md-button
                   >
@@ -68,7 +68,9 @@
                 <md-table-cell md-label="Actions">
                   <md-button
                     class="md-danger md-just-icon md-round"
-                    @click="modifyUser(item.reject_url)"
+                    @click.native="
+                      showSwal('remove-from-accepted', item.reject_url)
+                    "
                   >
                     <md-icon>close</md-icon></md-button
                   >
@@ -133,6 +135,7 @@
 <script>
 import api from "@/api.js";
 import notifyMixin from "@/mixins/notifyMixin";
+import Swal from "sweetalert2";
 
 export default {
   mixins: [notifyMixin],
@@ -177,7 +180,6 @@ export default {
       try {
         const response = await api.get(url).then((response) => {
           window.location.reload();
-          this.notifyVue(response.data.status, "info", "error_outline");
         });
       } catch (error) {
         this.notifyVue(
@@ -209,6 +211,54 @@ export default {
         .catch((error) => {
           this.notifyVue(error, "danger", "error_outline");
         });
+    },
+    showSwal(type, url) {
+      if (type === "accept") {
+        Swal.fire({
+          title: "Are you sure?",
+          text: `You want to accept this user`,
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonClass: "md-button md-success",
+          cancelButtonClass: "md-button md-danger",
+          confirmButtonText: "Yes, accept it!",
+          buttonsStyling: false,
+        }).then((result) => {
+          if (result.value) {
+            this.modifyUser(url);
+          }
+        });
+      } else if (type === "reject") {
+        Swal.fire({
+          title: "Are you sure?",
+          text: `You won't be able to revert this!`,
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonClass: "md-button md-success",
+          cancelButtonClass: "md-button md-danger",
+          confirmButtonText: "Yes, accept it!",
+          buttonsStyling: false,
+        }).then((result) => {
+          if (result.value) {
+            this.modifyUser(url);
+          }
+        });
+      } else if (type === "remove-from-accepted") {
+        Swal.fire({
+          title: "Are you sure?",
+          text: `You won't be able to revert this!`,
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonClass: "md-button md-success",
+          cancelButtonClass: "md-button md-danger",
+          confirmButtonText: "Yes, delete it!",
+          buttonsStyling: false,
+        }).then((result) => {
+          if (result.value) {
+            this.modifyUser(url);
+          }
+        });
+      }
     },
   },
 };
