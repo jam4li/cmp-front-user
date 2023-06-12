@@ -1,75 +1,188 @@
 <template>
-  <div class="md-layout">
-    <div class="md-layout-item">
-      <md-card>
-        <md-card-header class="md-card-header-icon md-card-header-green">
-          <div class="card-icon">
-            <md-icon>assignment</md-icon>
-          </div>
-          <h4 class="title">{{ $t("withdraw.table.title") }}</h4>
-        </md-card-header>
-        <md-card-content>
-          <md-table
-            :value="queriedData"
-            :md-sort.sync="currentSort"
-            :md-sort-order.sync="currentSortOrder"
-            :md-sort-fn="customSort"
-            class="paginated-table table-striped table-hover"
-          >
-            <md-table-toolbar>
-              <md-field>
-                <label for="pages">Per page</label>
-                <md-select v-model="pagination.perPage" name="pages">
-                  <md-option
-                    v-for="item in pagination.perPageOptions"
-                    :key="item"
-                    :label="item"
-                    :value="item"
-                  >
-                    {{ item }}
-                  </md-option>
-                </md-select>
-              </md-field>
-            </md-table-toolbar>
-            <md-table-row slot="md-table-row" slot-scope="{ item }">
-              <md-table-cell
-                v-bind:md-label="$t('withdraw.table.walletType')"
-                md-sort-by="wallet_type"
-              >
-                {{ item.wallet_type }}
-              </md-table-cell>
-              <md-table-cell
-                v-bind:md-label="$t('withdraw.table.walletAddress')"
-              >
-                {{ item.wallet_address }}
-              </md-table-cell>
-              <md-table-cell v-bind:md-label="$t('withdraw.table.amount')">
-                {{ item.amount }}
-              </md-table-cell>
-              <md-table-cell v-bind:md-label="$t('withdraw.table.status')">
-                {{ item.status }}
-              </md-table-cell>
-              <md-table-cell v-bind:md-label="$t('withdraw.table.date')">
-                {{ item.updated_at }}
-              </md-table-cell>
-            </md-table-row>
-          </md-table>
-        </md-card-content>
-        <md-card-actions md-alignment="space-between">
-          <div class="">
-            <p class="card-category">
-              Showing {{ from + 1 }} to {{ to }} of {{ total }} entries
-            </p>
-          </div>
-          <pagination
-            class="pagination-no-border pagination-success"
-            v-model="pagination.currentPage"
-            :per-page="pagination.perPage"
-            :total="total"
-          >
-          </pagination>
-        </md-card-actions>
-      </md-card>
+  <div>
+    <div class="header text-center">
+      <h3 class="title">Withdraw</h3>
+      <p class="category">You can withdraw your profits on Fridays</p>
+      <h6 class="category text-success">
+        <md-icon class="text-success">lock_open</md-icon>
+        Withdraw is activated
+      </h6>
+      <p class="category text-danger">
+        <md-icon class="text-danger">lock</md-icon>
+        Withdraw is not activated
+      </p>
+    </div>
+    <div class="md-layout">
+      <div
+        class="md-layout-item md-small-size-100 md-medium-size-100 md-large-size-50"
+      >
+        <md-card>
+          <md-card-header class="md-card-header-icon md-card-header-green">
+            <div class="card-icon">
+              <md-icon>note_add</md-icon>
+            </div>
+            <h4 class="title">Create New Withdraw Request</h4>
+          </md-card-header>
+
+          <md-card-content>
+            <form class="form-horizontal" @submit.prevent="submitForm">
+              <div class="md-layout">
+                <label class="md-layout-item md-size-25 md-form-label">
+                  Wallet Address
+                </label>
+                <div class="md-layout-item md-size-75">
+                  <md-field>
+                    <label>Enter Wallet Address</label>
+                    <md-input v-model="title" type="text"></md-input>
+                  </md-field>
+                </div>
+              </div>
+
+              <div class="md-layout">
+                <label class="md-layout-item md-size-25 md-form-label">
+                  Wallet Type
+                </label>
+                <div class="md-layout-item md-size-40">
+                  <md-field>
+                    <label for="movies">Enter Wallet Type</label>
+                    <md-select v-model="selectWalletType" id="types">
+                      <md-option
+                        v-for="item in typeList"
+                        :key="item.id"
+                        :value="item.id"
+                      >
+                        {{ item.name }}
+                      </md-option>
+                    </md-select>
+                  </md-field>
+                </div>
+              </div>
+
+              <div class="md-layout">
+                <label class="md-layout-item md-size-25 md-form-label">
+                  Amount
+                </label>
+                <div class="md-layout-item md-size-25">
+                  <md-field>
+                    <label>Enter Amount</label>
+                    <md-input v-model="amount" type="number"></md-input>
+                  </md-field>
+                </div>
+              </div>
+
+              <md-card-actions md-alignment="left">
+                <md-button type="submit" class="md-success">Submit</md-button>
+              </md-card-actions>
+            </form>
+          </md-card-content>
+        </md-card>
+      </div>
+      <div
+        class="md-layout-item md-small-size-100 md-medium-size-100 md-large-size-50"
+      >
+        <md-card>
+          <md-card-header class="md-card-header-icon md-card-header-green">
+            <div class="card-icon">
+              <md-icon>account_balance_wallet</md-icon>
+            </div>
+            <h4 class="title">{{ $t("wallet.table.title") }}</h4>
+          </md-card-header>
+          <md-card-content>
+            <md-table
+              :value="queriedData"
+              :md-sort.sync="currentSort"
+              :md-sort-order.sync="currentSortOrder"
+              :md-sort-fn="customSort"
+              class="paginated-table table-striped table-hover"
+            >
+              <md-table-row slot="md-table-row" slot-scope="{ item }">
+                <md-table-cell v-bind:md-label="$t('wallet.table.title')">{{
+                  item.title
+                }}</md-table-cell>
+                <md-table-cell v-bind:md-label="$t('wallet.table.type')">{{
+                  item.type
+                }}</md-table-cell>
+                <md-table-cell v-bind:md-label="$t('wallet.table.balance')">{{
+                  item.balance
+                }}</md-table-cell>
+              </md-table-row>
+            </md-table>
+          </md-card-content>
+        </md-card>
+      </div>
+      <div
+        class="md-layout-item md-small-size-100 md-medium-size-100 md-large-size-100"
+      >
+        <md-card>
+          <md-card-header class="md-card-header-icon md-card-header-green">
+            <div class="card-icon">
+              <md-icon>assignment</md-icon>
+            </div>
+            <h4 class="title">{{ $t("withdraw.table.title") }}</h4>
+          </md-card-header>
+          <md-card-content>
+            <md-table
+              :value="queriedData"
+              :md-sort.sync="currentSort"
+              :md-sort-order.sync="currentSortOrder"
+              :md-sort-fn="customSort"
+              class="paginated-table table-striped table-hover"
+            >
+              <md-table-toolbar>
+                <md-field>
+                  <label for="pages">Per page</label>
+                  <md-select v-model="pagination.perPage" name="pages">
+                    <md-option
+                      v-for="item in pagination.perPageOptions"
+                      :key="item"
+                      :label="item"
+                      :value="item"
+                    >
+                      {{ item }}
+                    </md-option>
+                  </md-select>
+                </md-field>
+              </md-table-toolbar>
+              <md-table-row slot="md-table-row" slot-scope="{ item }">
+                <md-table-cell
+                  v-bind:md-label="$t('withdraw.table.walletType')"
+                  md-sort-by="wallet_type"
+                >
+                  {{ item.wallet_type }}
+                </md-table-cell>
+                <md-table-cell
+                  v-bind:md-label="$t('withdraw.table.walletAddress')"
+                >
+                  {{ item.wallet_address }}
+                </md-table-cell>
+                <md-table-cell v-bind:md-label="$t('withdraw.table.amount')">
+                  {{ item.amount }}
+                </md-table-cell>
+                <md-table-cell v-bind:md-label="$t('withdraw.table.status')">
+                  {{ item.status }}
+                </md-table-cell>
+                <md-table-cell v-bind:md-label="$t('withdraw.table.date')">
+                  {{ item.updated_at }}
+                </md-table-cell>
+              </md-table-row>
+            </md-table>
+          </md-card-content>
+          <md-card-actions md-alignment="space-between">
+            <div class="">
+              <p class="card-category">
+                Showing {{ from + 1 }} to {{ to }} of {{ total }} entries
+              </p>
+            </div>
+            <pagination
+              class="pagination-no-border pagination-success"
+              v-model="pagination.currentPage"
+              :per-page="pagination.perPage"
+              :total="total"
+            >
+            </pagination>
+          </md-card-actions>
+        </md-card>
+      </div>
     </div>
   </div>
 </template>
