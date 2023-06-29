@@ -21,8 +21,8 @@ services:
       - 443:443
     volumes:
       - ./data/nginx/nginx.prod.conf:/etc/nginx/conf.d/default.conf
-      - ./data/certs/cmeprice.net.pem:/etc/nginx/certs/cmeprice.net.pem
-      - ./data/certs/cmeprice.net.key:/etc/nginx/certs/cmeprice.net.key
+      - ./data/certs/cm-enterprise.net.pem:/etc/nginx/certs/cm-enterprise.net.pem
+      - ./data/certs/cm-enterprise.net.key:/etc/nginx/certs/cm-enterprise.net.key
       - static_volume:/cmp_api_python/static
       - media_volume:/cmp_api_python/media
     networks:
