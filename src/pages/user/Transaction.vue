@@ -47,7 +47,7 @@
                 {{ item.description }}
               </md-table-cell>
               <md-table-cell v-bind:md-label="$t('transaction.table.date')">
-                {{ item.updated_at }}
+                {{ item.created_at }}
               </md-table-cell>
             </md-table-row>
           </md-table>
@@ -126,7 +126,7 @@ export default {
     },
   },
   mounted() {
-    api.get("/api/v1/transaction/user/list/").then((response) => {
+    api.get("/api/v1/network/user/transaction/list/").then((response) => {
       if (response.data.success) {
         this.tableData = response.data.data;
       } else {
