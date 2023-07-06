@@ -67,7 +67,7 @@ export default {
   props: {
     title: {
       type: String,
-      default: "CMP",
+      default: "CME",
     },
     rtlTitle: {
       type: String,
