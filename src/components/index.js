@@ -25,6 +25,8 @@ import Collapse from "./Collapse.vue";
 import Slider from "./Slider.vue";
 import SimpleWizard from "./Wizard/Wizard.vue";
 import WizardTab from "./Wizard/WizardTab.vue";
+import SimplePurchase from "./Purchase/Purchase.vue";
+import PurchaseTab from "./Purchase/PurchaseTab.vue";
 import AsyncWorldMap from "./WorldMap/AsyncWorldMap.vue";
 
 import Pagination from "./Pagination.vue";
@@ -56,6 +58,8 @@ export {
   Slider,
   SimpleWizard,
   WizardTab,
+  SimplePurchase,
+  PurchaseTab,
   AnimatedNumber,
   Collapse,
   AsyncWorldMap,

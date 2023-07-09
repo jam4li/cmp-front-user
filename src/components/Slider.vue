@@ -22,7 +22,7 @@ export default {
       default: () => {
         return {
           min: 0,
-          max: 100,
+          max: 50,
         };
       },
     },

@@ -32,6 +32,7 @@ import ExtendedForms from "@/pages/user/Forms/ExtendedForms.vue";
 import ValidationForms from "@/pages/user/Forms/ValidationForms.vue";
 import TicketForm from "@/pages/user/Forms/TicketForm.vue";
 import Wizard from "@/pages/user/Forms/Wizard.vue";
+import Purchase from "@/pages/user/Forms/Purchase.vue";
 
 // TableList pages
 import RegularTables from "@/pages/user/Tables/RegularTables.vue";
@@ -327,6 +328,12 @@ const routes = [
         path: "package",
         name: "Package",
         components: { default: Package },
+        meta: { requiresAuth: true },
+      },
+      {
+        path: "purchase",
+        name: "Purchase",
+        components: { default: Purchase },
         meta: { requiresAuth: true },
       },
       {
