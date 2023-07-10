@@ -19,7 +19,7 @@
                 <md-table-row slot="md-table-row">
                   <md-table-cell>Price</md-table-cell>
                   <md-table-cell>{{
-                    purchaseData.tether_amount
+                    purchaseData.package_price
                   }}</md-table-cell>
                 </md-table-row>
                 <md-table-row slot="md-table-row">
@@ -50,13 +50,11 @@
                   >
                 </md-table-row>
                 <md-table-row slot="md-table-row">
-                  <md-table-cell>IET</md-table-cell>
+                  <md-table-cell>EIT</md-table-cell>
                   <md-table-cell
                     >{{ purchaseData.token_percent }} %</md-table-cell
                   >
-                  <md-table-cell
-                    >{{ purchaseData.token_amount }} $</md-table-cell
-                  >
+                  <md-table-cell>{{ purchaseData.token_amount }}</md-table-cell>
                 </md-table-row>
               </md-table>
             </md-card-content>
