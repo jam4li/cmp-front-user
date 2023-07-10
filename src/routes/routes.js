@@ -331,7 +331,7 @@ const routes = [
         meta: { requiresAuth: true },
       },
       {
-        path: "purchase",
+        path: "purchase/:packageId",
         name: "Purchase",
         components: { default: Purchase },
         meta: { requiresAuth: true },

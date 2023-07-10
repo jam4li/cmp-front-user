@@ -22,7 +22,9 @@
           </div>
           <template slot="footer">
             <div class="price">
-              <md-button class="md-info">Buy</md-button>
+              <md-button class="md-info" @click="purchaseProduct(packet.id)"
+                >Buy</md-button
+              >
             </div>
           </template>
         </product-card>
@@ -63,6 +65,12 @@ export default {
           "error_outline"
         );
       }
+    },
+    purchaseProduct(id) {
+      // Open the specified URL in a new window or tab
+      const mainSiteUrl = window.location.origin;
+      const purchaseUrl = mainSiteUrl + "/purchase/" + id;
+      window.location.href = purchaseUrl;
     },
   },
 };

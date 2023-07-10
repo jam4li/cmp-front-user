@@ -11,9 +11,12 @@
           </h5>
         </template>
 
-        <purchase-tab>
+        <purchase-tab :before-change="() => validateStep('step1')">
           <template slot="label"> TOKEN </template>
-          <first-step ref="step1" @on-validated="onStepValidated"></first-step>
+          <first-step
+            ref="step1"
+            @on-validated="onFirstStepValidated"
+          ></first-step>
         </purchase-tab>
 
         <purchase-tab :before-change="() => validateStep('step2')">
@@ -21,6 +24,7 @@
           <second-step
             ref="step2"
             @on-validated="onStepValidated"
+            :purchase-data="purchaseCalculatedData"
           ></second-step>
         </purchase-tab>
 
@@ -36,6 +40,7 @@
 import FirstStep from "./Purchase/FirstStep.vue";
 import SecondStep from "./Purchase/SecondStep.vue";
 import ThirdStep from "./Purchase/ThirdStep.vue";
+import api from "@/api.js";
 import Swal from "sweetalert2";
 import { SimplePurchase, PurchaseTab } from "@/components";
 
@@ -43,7 +48,13 @@ export default {
   data() {
     return {
       purchaseModel: {},
+      packageId: null,
+      sliderValue: 0,
+      purchaseCalculatedData: {},
     };
+  },
+  created() {
+    this.packageId = this.$route.params.packageId;
   },
   components: {
     FirstStep,
@@ -54,9 +65,32 @@ export default {
   },
   methods: {
     validateStep(ref) {
+      console.log("Validate Step");
       return this.$refs[ref].validate();
     },
+    onFirstStepValidated(validated, slider) {
+      this.slider = slider;
+
+      api
+        .post(`api/v1/purchase/user/calculate/`, {
+          package: this.packageId,
+          percent: this.slider,
+        })
+        .then((response) => {
+          if (response.data.success) {
+            this.purchaseCalculatedData = response.data.data;
+            alert(response.data.message);
+          } else {
+            alert(response.data.message);
+          }
+        })
+        .catch((error) => {
+          console.error("Error submitting form:", error);
+          alert("Error submitting form. Please try again.");
+        });
+    },
     onStepValidated(validated, model) {
+      console.log("On step validated");
       this.purchaseModel = { ...this.purchaseModel, ...model };
     },
     purchaseComplete() {
