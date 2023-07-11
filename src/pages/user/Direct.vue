@@ -20,13 +20,13 @@
             Share these links with potential referrals to help them join your
             network on the Left side.
             <br /><br />
-            <a href="#">https://cloudminepro.com/</a>
+            <a :href="leftLink">{{ leftLink }}</a>
           </template>
           <template slot="tab-pane-2">
             Share these links with potential referrals to help them join your
             network on the Right side.
             <br /><br />
-            <a href="#">https://cloudminepro.com/</a>
+            <a :href="rightLink">{{ rightLink }}</a>
           </template>
         </tabs>
       </div>
@@ -96,6 +96,9 @@ export default {
   },
   data() {
     return {
+      leftLink: null,
+      rightLink: null,
+      referrerCode: null,
       pagination: {
         perPage: 5,
         currentPage: 1,
@@ -107,6 +110,17 @@ export default {
     };
   },
   mounted() {
+    api.get("/api/v1/user/user/referral/").then((response) => {
+      if (response.data.success) {
+        this.referrerCode = response.data.data.referrer_code;
+        const mainSiteUrl = window.location.origin;
+
+        this.leftLink = `${mainSiteUrl}/${this.referrerCode}/left`;
+        this.rightLink = `${mainSiteUrl}/${this.referrerCode}/right`;
+      } else {
+        this.notifyVue(response.data.error, "danger", "error_outline");
+      }
+    });
     api.get("/api/v1/referral/user/direct/list/").then((response) => {
       if (response.data.success) {
         this.tableData = response.data.data;
