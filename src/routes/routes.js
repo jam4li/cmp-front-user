@@ -14,6 +14,7 @@ import Dashboard from "@/pages/user/Dashboard.vue";
 import User from "@/pages/user/Pages/UserProfile.vue";
 import Roadmap from "@/pages/user/Pages/Roadmap.vue";
 import Login from "@/pages/user/Pages/Login.vue";
+import Register from "@/pages/user/Pages/Register.vue";
 import Package from "@/pages/user/Pages/Package.vue";
 import PageNotFound from "@/pages/user/Pages/PageNotFound.vue";
 
@@ -212,6 +213,11 @@ let authPages = {
   component: AuthLayout,
   name: "Authentication",
   children: [
+    {
+      path: ":referrer_code/:side",
+      name: "Register",
+      component: Register,
+    },
     {
       path: "/login",
       name: "Login",

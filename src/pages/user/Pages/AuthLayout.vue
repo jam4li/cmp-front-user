@@ -58,10 +58,14 @@ export default {
   computed: {
     setBgImage() {
       let images = {
-        Login: "./img/lock.jpg",
+        Register: "/img/lock.jpg",
+        Login: "/img/lock.jpg",
       };
+
+      let mainSiteUrl = window.location.origin;
+
       return {
-        backgroundImage: `url(${images[this.$route.name]})`,
+        backgroundImage: `url(${mainSiteUrl}${images[this.$route.name]})`,
       };
     },
     setPageClass() {
