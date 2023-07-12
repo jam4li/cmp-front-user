@@ -208,24 +208,6 @@ let pagesMenu = {
   ],
 };
 
-let authPages = {
-  path: "/",
-  component: AuthLayout,
-  name: "Authentication",
-  children: [
-    {
-      path: ":referrer_code/:side",
-      name: "Register",
-      component: Register,
-    },
-    {
-      path: "/login",
-      name: "Login",
-      component: Login,
-    },
-  ],
-};
-
 let support = {
   path: "/support",
   name: "Support",
@@ -250,6 +232,24 @@ let support = {
   ],
 };
 
+let authPages = {
+  path: "/",
+  component: AuthLayout,
+  name: "Authentication",
+  children: [
+    {
+      path: ":referrer_code/:side",
+      name: "Register",
+      component: Register,
+    },
+    {
+      path: "/login",
+      name: "Login",
+      component: Login,
+    },
+  ],
+};
+
 const routes = [
   {
     path: "/",
@@ -262,8 +262,8 @@ const routes = [
   tablesMenu,
   mapsMenu,
   pagesMenu,
-  authPages,
   support,
+  authPages,
   {
     path: "/",
     component: DashboardLayout,
