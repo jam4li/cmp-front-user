@@ -263,7 +263,6 @@ const routes = [
   mapsMenu,
   pagesMenu,
   support,
-  authPages,
   {
     path: "/",
     component: DashboardLayout,
@@ -353,6 +352,7 @@ const routes = [
       },
     ],
   },
+  authPages,
   {
     path: "*",
     components: { default: PageNotFound },

@@ -69,7 +69,7 @@ export default {
   methods: {
     validate() {
       console.log("Validate Second Form");
-      this.$emit("on-validated", true, this.model);
+      this.$emit("on-validated", true);
       return Promise.resolve(true);
     },
   },

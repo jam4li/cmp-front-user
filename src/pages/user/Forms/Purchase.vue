@@ -23,7 +23,7 @@
           <template slot="label"> Inovice </template>
           <second-step
             ref="step2"
-            @on-validated="onStepValidated"
+            @on-validated="onSecondStepValidated"
             :purchase-data="purchaseCalculatedData"
           ></second-step>
         </purchase-tab>
@@ -51,6 +51,8 @@ export default {
       packageId: null,
       sliderValue: 0,
       purchaseCalculatedData: {},
+      tether_amount: null,
+      token_amount: null,
     };
   },
   created() {
@@ -79,6 +81,10 @@ export default {
         .then((response) => {
           if (response.data.success) {
             this.purchaseCalculatedData = response.data.data;
+            this.token_amount = this.purchaseCalculatedData.token_amount;
+            this.tether_amount =
+              this.purchaseCalculatedData.tether_amount +
+              this.purchaseCalculatedData.fee;
             alert(response.data.message);
           } else {
             alert(response.data.message);
@@ -89,9 +95,25 @@ export default {
           alert("Error submitting form. Please try again.");
         });
     },
-    onStepValidated(validated, model) {
-      console.log("On step validated");
-      this.purchaseModel = { ...this.purchaseModel, ...model };
+    onSecondStepValidated(validated) {
+      api
+        .post(`api/v1/trc20/user/create/`, {
+          package: this.packageId,
+          tether_amount: this.tether_amount,
+          token_amount: this.token_amount,
+        })
+        .then((response) => {
+          if (response.data.success) {
+            const gateway_url = response.data.data.gateway_url;
+            window.location.href = gateway_url;
+          } else {
+            alert(response.data.message);
+          }
+        })
+        .catch((error) => {
+          console.error("Error submitting form:", error);
+          alert("Error submitting form. Please try again.");
+        });
     },
     purchaseComplete() {
       Swal.fire({
