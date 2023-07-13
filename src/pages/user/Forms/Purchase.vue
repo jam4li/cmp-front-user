@@ -82,9 +82,7 @@ export default {
           if (response.data.success) {
             this.purchaseCalculatedData = response.data.data;
             this.token_amount = this.purchaseCalculatedData.token_amount;
-            this.tether_amount =
-              this.purchaseCalculatedData.tether_amount +
-              this.purchaseCalculatedData.fee;
+            this.tether_amount = this.purchaseCalculatedData.tether_amount;
             alert(response.data.message);
           } else {
             alert(response.data.message);
