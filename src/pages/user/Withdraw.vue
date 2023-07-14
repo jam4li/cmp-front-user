@@ -42,7 +42,7 @@
                 <label class="md-layout-item md-size-25 md-form-label">
                   Wallet Type
                 </label>
-                <div class="md-layout-item md-size-40">
+                <div class="md-layout-item md-size-60">
                   <md-field>
                     <label for="movies">Enter Wallet Type</label>
                     <md-select v-model="selectedWalletType" id="types">
@@ -62,10 +62,14 @@
                 <label class="md-layout-item md-size-25 md-form-label">
                   Amount
                 </label>
-                <div class="md-layout-item md-size-25">
+                <div class="md-layout-item md-size-60">
                   <md-field>
                     <label>Enter Amount</label>
-                    <md-input v-model="amount" type="number"></md-input>
+                    <md-input
+                      v-model="amount"
+                      type="number"
+                      step="0.01"
+                    ></md-input>
                   </md-field>
                 </div>
               </div>
