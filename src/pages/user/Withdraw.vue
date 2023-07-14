@@ -159,7 +159,10 @@
                 <md-table-cell v-bind:md-label="$t('withdraw.table.status')">
                   {{ item.status }}
                 </md-table-cell>
-                <md-table-cell v-bind:md-label="$t('withdraw.table.date')">
+                <md-table-cell md-label="Create">
+                  {{ item.created_at }}
+                </md-table-cell>
+                <md-table-cell md-label="Update">
                   {{ item.updated_at }}
                 </md-table-cell>
               </md-table-row>
