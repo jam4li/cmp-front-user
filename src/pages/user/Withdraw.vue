@@ -3,14 +3,14 @@
     <div class="header text-center">
       <h3 class="title">Withdraw</h3>
       <p class="category">You can withdraw your profits on Fridays</p>
-      <h6 class="category text-success">
+      <h6 v-if="isActive" class="category text-success">
         <md-icon class="text-success">lock_open</md-icon>
         Withdraw is activated
       </h6>
-      <p class="category text-danger">
+      <h6 v-else class="category text-danger">
         <md-icon class="text-danger">lock</md-icon>
         Withdraw is not activated
-      </p>
+      </h6>
     </div>
     <div class="md-layout">
       <div
@@ -33,7 +33,7 @@
                 <div class="md-layout-item md-size-75">
                   <md-field>
                     <label>Enter Wallet Address</label>
-                    <md-input v-model="title" type="text"></md-input>
+                    <md-input v-model="walletAddress" type="text"></md-input>
                   </md-field>
                 </div>
               </div>
@@ -45,13 +45,13 @@
                 <div class="md-layout-item md-size-40">
                   <md-field>
                     <label for="movies">Enter Wallet Type</label>
-                    <md-select v-model="selectWalletType" id="types">
+                    <md-select v-model="selectedWalletType" id="types">
                       <md-option
-                        v-for="item in typeList"
-                        :key="item.id"
-                        :value="item.id"
+                        v-for="item in walletType"
+                        :key="item.wallet_type"
+                        :value="item.wallet_type"
                       >
-                        {{ item.name }}
+                        {{ item.display_name }}
                       </md-option>
                     </md-select>
                   </md-field>
@@ -89,22 +89,16 @@
           </md-card-header>
           <md-card-content>
             <md-table
-              :value="queriedData"
-              :md-sort.sync="currentSort"
-              :md-sort-order.sync="currentSortOrder"
-              :md-sort-fn="customSort"
+              v-model="walletListData"
               class="paginated-table table-striped table-hover"
             >
               <md-table-row slot="md-table-row" slot-scope="{ item }">
                 <md-table-cell v-bind:md-label="$t('wallet.table.title')">{{
                   item.title
                 }}</md-table-cell>
-                <md-table-cell v-bind:md-label="$t('wallet.table.type')">{{
-                  item.type
-                }}</md-table-cell>
-                <md-table-cell v-bind:md-label="$t('wallet.table.balance')">{{
-                  item.balance
-                }}</md-table-cell>
+                <md-table-cell v-bind:md-label="$t('wallet.table.balance')"
+                  >{{ item.balance }} $</md-table-cell
+                >
               </md-table-row>
             </md-table>
           </md-card-content>
@@ -201,7 +195,7 @@ export default {
      * Returns a page from the searched data or the whole data. Search is performed in the watch section below
      */
     queriedData() {
-      let result = this.tableData;
+      let result = this.withdrawListData;
       return result.slice(this.from, this.to);
     },
     to() {
@@ -215,12 +209,11 @@ export default {
       return this.pagination.perPage * (this.pagination.currentPage - 1);
     },
     total() {
-      return this.tableData.length;
+      return this.withdrawListData.length;
     },
   },
   data() {
     return {
-      data: null,
       currentSort: "name",
       currentSortOrder: "asc",
       pagination: {
@@ -229,7 +222,13 @@ export default {
         perPageOptions: [5, 10, 25, 50],
         total: 0,
       },
-      tableData: [],
+      withdrawListData: [],
+      walletListData: [],
+      walletType: [],
+      walletAddress: null,
+      amount: null,
+      selectedWalletType: null,
+      isActive: false,
     };
   },
   methods: {
@@ -242,11 +241,46 @@ export default {
         return b[sortBy].localeCompare(a[sortBy]);
       });
     },
+    submitForm() {
+      api
+        .post("api/v1/withdraw/user/create/", {
+          wallet_address: this.walletAddress,
+          wallet_type: this.selectedWalletType,
+          amount: this.amount,
+        })
+        .then((response) => {
+          if (response.data.success) {
+            alert(response.data.message);
+            window.location.reload();
+          } else {
+            alert(response.data.error.detail);
+          }
+        })
+        .catch((error) => {
+          console.error("Error submitting form:", error);
+          alert("Error submitting form. Please try again.");
+        });
+    },
   },
   mounted() {
     api.get("/api/v1/withdraw/user/list/").then((response) => {
       if (response.data.success) {
-        this.tableData = response.data.data;
+        this.withdrawListData = response.data.data;
+      } else {
+        this.notifyVue(response.data.error, "danger", "error_outline");
+      }
+    });
+    api.get("api/v1/withdraw/user/detail/").then((response) => {
+      if (response.data.success) {
+        this.walletType = response.data.data.wallet_types;
+        this.isActive = response.data.data.is_active;
+      } else {
+        this.notifyVue(response.data.error, "danger", "error_outline");
+      }
+    });
+    api.get("/api/v1/wallet/user/list/").then((response) => {
+      if (response.data.success) {
+        this.walletListData = response.data.data;
       } else {
         this.notifyVue(response.data.error, "danger", "error_outline");
       }
