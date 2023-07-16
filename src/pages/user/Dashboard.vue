@@ -151,7 +151,6 @@ export default {
   created() {
     this.fetchAnnouncements();
     this.fetchUserInfo();
-    this.showSwial();
   },
   methods: {
     async fetchAnnouncements() {
@@ -185,20 +184,6 @@ export default {
           "error_outline"
         );
       }
-    },
-    async showSwial() {
-      Swal.fire({
-        title: "Exciting News - Completely Revamped Investor Panel",
-        buttonsStyling: false,
-        confirmButtonClass: "md-button md-success",
-        html: `<div style="text-align: left;">
-          Dear valued investors,</br>
-          We are thrilled to announce that our team has been working tirelessly to redesign and enhance the investor panel on our platform.</br>
-          During this time, access to your investor panel may be limited or unavailable. We apologize for any inconvenience this may cause and appreciate your understanding.</br></br>
-        <strong>Please rest assured that your funds are safe and secure throughout this process. We understand the importance of protecting your investments,
-        and we have taken all necessary precautions to safeguard them.</strong>
-        </div>`,
-      });
     },
   },
 };
