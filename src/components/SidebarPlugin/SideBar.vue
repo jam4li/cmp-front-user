@@ -2,25 +2,17 @@
   <div
     class="sidebar"
     :data-color="activeColor"
-    :data-image="backgroundImage"
+    :data-image="mainSiteUrl + backgroundImage"
     :data-background-color="backgroundColor"
     :style="sidebarStyle"
   >
     <div class="logo">
-      <a
-        href="https://www.creative-tim.com"
-        class="simple-text logo-mini"
-        target="_blank"
-      >
+      <a :href="mainSiteUrl" class="simple-text logo-mini" target="_blank">
         <div class="logo-img">
           <img :src="logo" />
         </div>
       </a>
-      <a
-        href="https://www.creative-tim.com"
-        class="simple-text logo-normal"
-        target="_blank"
-      >
+      <a :href="mainSiteUrl" class="simple-text logo-normal" target="_blank">
         <template v-if="$route.meta.rtlActive">{{ rtlTitle }}</template>
         <template v-else>{{ title }}</template>
       </a>
@@ -65,6 +57,10 @@
 export default {
   name: "sidebar",
   props: {
+    mainSiteUrl: {
+      type: String,
+      default: window.location.origin,
+    },
     title: {
       type: String,
       default: "CME",
@@ -91,7 +87,7 @@ export default {
     },
     backgroundImage: {
       type: String,
-      default: "./img/sidebar-2.jpg",
+      default: "/img/sidebar-2.jpg",
     },
     backgroundColor: {
       type: String,
@@ -103,7 +99,7 @@ export default {
     },
     logo: {
       type: String,
-      default: "./img/vue-logo.png",
+      default: "/img/logo.png",
     },
     sidebarLinks: {
       type: Array,

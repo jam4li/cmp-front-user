@@ -169,7 +169,7 @@ export default {
     return {
       sidebarBackgroundColor: "black",
       sidebarBackground: "green",
-      sidebarBackgroundImage: "./img/sidebar-2.jpg",
+      sidebarBackgroundImage: "/img/sidebar-2.jpg",
       sidebarMini: true,
       sidebarImg: true,
     };
