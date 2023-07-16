@@ -3,7 +3,7 @@
     <div class="container">
       <div class="copyright text-center">
         &copy; {{ new Date().getFullYear() }}
-        <a href="https://cloudminepro.com/" target="_blank">CME.</a>All Rights
+        <a href="https://cm-enterprise.net/" target="_blank">CME.</a>All Rights
         Reserved
       </div>
     </div>

@@ -92,7 +92,7 @@ export default {
           icon: "apartment",
           title: "02. Corporate Rights and Duties",
           description:
-            "2.1. The company is committed to using investor funds for its intended purpose and to drive real activity in the Forex market. Do the robot and wherever he likes. 2.2. The company guarantees investor budget security for the profits it owns and commits to timely depositing and withdrawing profits, except in exceptional cases. Corporate profit is 0.5 to 1%. 2.3 The Company is not responsible for any technical defects in electronic payment systems. Financial transactions associated with depositing and withdrawing funds into electronic payment systems account are irreversible and final. 2.4 Cloudminepro does not assume responsibility for incorrect transactions with funds and inaccurate financial accounts. 2.5. The company is responsible for maintaining the confidentiality of personal information provided by the investor.",
+            "2.1. The company is committed to using investor funds for its intended purpose and to drive real activity in the Forex market. Do the robot and wherever he likes. 2.2. The company guarantees investor budget security for the profits it owns and commits to timely depositing and withdrawing profits, except in exceptional cases. Corporate profit is 0.5 to 1%. 2.3 The Company is not responsible for any technical defects in electronic payment systems. Financial transactions associated with depositing and withdrawing funds into electronic payment systems account are irreversible and final. 2.4 CME does not assume responsibility for incorrect transactions with funds and inaccurate financial accounts. 2.5. The company is responsible for maintaining the confidentiality of personal information provided by the investor.",
         },
 
         {
@@ -100,7 +100,7 @@ export default {
           icon: "contact_page",
           title: "03. Investor Rights and Duties",
           description:
-            "3.1 The investor, in filling in the registration form, is personally responsible for the accuracy of the information provided and if the information is incorrect, it is the investor's responsibility. 3.2 The investor is obliged to check each transaction in its financial account. If any uncertainty or disagreement is identified, the investor can request support from cloudminepro support. 3.3 All services provided by the Company are used solely for the purpose of investing by the investor. 3.4 The Investor agrees to the processing of personal information in accordance with the provisions of the law.",
+            "3.1 The investor, in filling in the registration form, is personally responsible for the accuracy of the information provided and if the information is incorrect, it is the investor's responsibility. 3.2 The investor is obliged to check each transaction in its financial account. If any uncertainty or disagreement is identified, the investor can request support from CME support. 3.3 All services provided by the Company are used solely for the purpose of investing by the investor. 3.4 The Investor agrees to the processing of personal information in accordance with the provisions of the law.",
         },
         {
           colorIcon: "icon-info",
@@ -114,7 +114,7 @@ export default {
           icon: "copyright",
           title: "05. Copyright Notice",
           description:
-            "5.1. The cloudminepro.com website (www.cloudminepro.com), all hosted information and services are proprietary to the company and are protected by copyright. 5.2 An investor will be prosecuted for copyright infringement (damaging the website, copying content, etc.). His account will be frozen with funds in his personal account.",
+            "5.1. The cm-enterprise.net website (www.cm-enterprise.net), all hosted information and services are proprietary to the company and are protected by copyright. 5.2 An investor will be prosecuted for copyright infringement (damaging the website, copying content, etc.). His account will be frozen with funds in his personal account.",
         },
         {
           colorIcon: "icon-info",
