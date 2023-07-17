@@ -11,7 +11,7 @@
         @click.capture="clicked"
       >
         <span>
-          {{ data.name }}
+          {{ data.email }}
           <b class="caret"></b>
         </span>
       </a>
@@ -58,6 +58,7 @@ export default {
     return {
       isClosed: true,
       data: {},
+      avatar: window.location.origin + "/img/avatar.png",
     };
   },
   created() {
@@ -66,8 +67,8 @@ export default {
   methods: {
     async fetchData() {
       try {
-        const response = await api.get("/api/v1/user/user/detail/"); // Replace with your API endpoint
-        this.data = response.data;
+        const response = await api.get("/api/v1/user/user/detail/");
+        this.data = response.data.data;
       } catch (error) {
         console.error("Error fetching posts:", error);
       }
