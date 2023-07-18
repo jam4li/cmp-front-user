@@ -17,7 +17,7 @@
         <template slot="footer">
           <div class="stats">
             <md-icon>info</md-icon>
-            <a href="invest/">{{ $t("dashboard.moreInfo") }}</a>
+            <a :href="getInvestRoute()">{{ $t("dashboard.moreInfo") }}</a>
           </div>
         </template>
       </stats-card>
@@ -37,7 +37,7 @@
         <template slot="footer">
           <div class="stats">
             <md-icon>local_offer</md-icon>
-            <a href="wallet/">{{ $t("dashboard.allWallets") }}</a>
+            <a :href="getWalletRoute()">{{ $t("dashboard.allWallets") }}</a>
           </div>
         </template>
       </stats-card>
@@ -57,7 +57,9 @@
         <template slot="footer">
           <div class="stats">
             <md-icon>add_circle</md-icon>
-            <a href="direct/">{{ $t("dashboard.addDirectInvites") }}</a>
+            <a :href="getDirectRoute()">{{
+              $t("dashboard.addDirectInvites")
+            }}</a>
           </div>
         </template>
       </stats-card>
@@ -77,7 +79,7 @@
         <template slot="footer">
           <div class="stats">
             <md-icon>info</md-icon>
-            <a href="binary/">{{ $t("dashboard.moreInfo") }}</a>
+            <a :href="getBinaryRoute()">{{ $t("dashboard.moreInfo") }}</a>
           </div>
         </template>
       </stats-card>
@@ -149,6 +151,15 @@ export default {
     };
   },
   created() {
+    const params = new URLSearchParams(window.location.search);
+
+    if (params.has("token") && params.has("email")) {
+      params.delete("token");
+      params.delete("email");
+
+      this.$router.replace({ query: null });
+    }
+
     this.fetchAnnouncements();
     this.fetchUserInfo();
   },
@@ -184,6 +195,18 @@ export default {
           "error_outline"
         );
       }
+    },
+    getInvestRoute() {
+      return this.$router.resolve({ name: "Invest" }).href;
+    },
+    getWalletRoute() {
+      return this.$router.resolve({ name: "Wallet" }).href;
+    },
+    getDirectRoute() {
+      return this.$router.resolve({ name: "Direct" }).href;
+    },
+    getBinaryRoute() {
+      return this.$router.resolve({ name: "Binary" }).href;
     },
   },
 };
