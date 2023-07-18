@@ -47,8 +47,11 @@
               class="paginated-table table-striped table-hover"
             >
               <md-table-row slot="md-table-row" slot-scope="{ item }">
-                <md-table-cell v-bind:md-label="$t('direct.table.title')">{{
+                <md-table-cell md-label="Email">{{
                   item.user.email
+                }}</md-table-cell>
+                <md-table-cell md-label="Side">{{
+                  item.recruited
                 }}</md-table-cell>
               </md-table-row>
             </md-table>
