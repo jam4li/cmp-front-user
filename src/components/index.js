@@ -10,6 +10,7 @@ import AnnouncementTable from "./Tables/AnnouncementTable.vue";
 
 import SignupCard from "./Cards/SignupCard.vue";
 import LoginCard from "./Cards/LoginCard.vue";
+import BinaryCard from "./Cards/BinaryCard.vue";
 import StatsCard from "./Cards/StatsCard.vue";
 import ChartCard from "./Cards/ChartCard.vue";
 import InvestCard from "./Cards/InvestCard.vue";
@@ -42,6 +43,7 @@ export {
   Pagination,
   AnnouncementTable,
   SignupCard,
+  BinaryCard,
   StatsCard,
   LoginCard,
   ChartCard,
