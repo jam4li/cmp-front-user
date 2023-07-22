@@ -45,7 +45,7 @@ export default {
   methods: {
     fetchTreeData() {
       api
-        .get("api/v1/referral/user/network/detail/")
+        .get("api/v1/network/user/detail/")
         .then((response) => {
           this.treeData = response.data.data;
         })

@@ -124,7 +124,7 @@ export default {
         this.notifyVue(response.data.error, "danger", "error_outline");
       }
     });
-    api.get("/api/v1/referral/user/direct/list/").then((response) => {
+    api.get("/api/v1/network/user/direct/list/").then((response) => {
       if (response.data.success) {
         this.tableData = response.data.data;
       } else {

@@ -97,7 +97,7 @@ export default {
   methods: {
     async fetchBinaryInfo() {
       try {
-        const response = await api.get("/api/v1/referral/user/binary/detail/");
+        const response = await api.get("/api/v1/network/user/binary/detail/");
         if (response.data.success) {
           this.binaryInfo = response.data.data;
           this.isActive = response.data.data.status;
