@@ -50,9 +50,7 @@
                 <md-table-cell md-label="Email">{{
                   item.user.email
                 }}</md-table-cell>
-                <md-table-cell md-label="Side">{{
-                  item.recruited
-                }}</md-table-cell>
+                <md-table-cell md-label="Side">{{ item.side }}</md-table-cell>
               </md-table-row>
             </md-table>
           </md-card-content>
