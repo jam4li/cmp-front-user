@@ -45,7 +45,6 @@
 
 <script>
 import api from "@/api.js";
-import users from "./Tables/users";
 
 export default {
   components: {},
