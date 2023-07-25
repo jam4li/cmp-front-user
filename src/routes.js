@@ -17,43 +17,6 @@ import Login from "@/pages/user/Pages/Login.vue";
 import Register from "@/pages/user/Pages/Register.vue";
 import Package from "@/pages/user/Pages/Package.vue";
 import PageNotFound from "@/pages/user/Pages/PageNotFound.vue";
-
-// Components pages
-import Buttons from "@/pages/user/Components/Buttons.vue";
-import GridSystem from "@/pages/user/Components/GridSystem.vue";
-import Panels from "@/pages/user/Components/Panels.vue";
-import SweetAlert from "@/pages/user/Components/SweetAlert.vue";
-import Notifications from "@/pages/user/Components/Notifications.vue";
-import Icons from "@/pages/user/Components/Icons.vue";
-import Typography from "@/pages/user/Components/Typography.vue";
-
-// Forms pages
-import RegularForms from "@/pages/user/Forms/RegularForms.vue";
-import ExtendedForms from "@/pages/user/Forms/ExtendedForms.vue";
-import ValidationForms from "@/pages/user/Forms/ValidationForms.vue";
-import TicketForm from "@/pages/user/Forms/TicketForm.vue";
-import Wizard from "@/pages/user/Forms/Wizard.vue";
-import Purchase from "@/pages/user/Forms/Purchase.vue";
-
-// TableList pages
-import RegularTables from "@/pages/user/Tables/RegularTables.vue";
-import ExtendedTables from "@/pages/user/Tables/ExtendedTables.vue";
-import PaginatedTables from "@/pages/user/Tables/PaginatedTables.vue";
-import Withdraw from "@/pages/user/Withdraw.vue";
-import TicketDetail from "@/pages/user/TicketDetail.vue";
-import Transaction from "@/pages/user/Transaction.vue";
-
-// Maps pages
-import GoogleMaps from "@/pages/user/Maps/GoogleMaps.vue";
-import FullScreenMap from "@/pages/user/Maps/FullScreenMap.vue";
-import VectorMaps from "@/pages/user/Maps/VectorMaps.vue";
-
-// Calendar
-import Calendar from "@/pages/user/Calendar.vue";
-// Charts
-import Charts from "@/pages/user/Charts.vue";
-import Widgets from "@/pages/user/Widgets.vue";
-
 import Invest from "@/pages/user/Invest.vue";
 import Support from "@/pages/user/Support.vue";
 import Authentication from "@/pages/user/Authentication.vue";
@@ -62,132 +25,16 @@ import Wallet from "@/pages/user/Wallet.vue";
 import Direct from "@/pages/user/Direct.vue";
 import Binary from "@/pages/user/Binary.vue";
 
+// Forms pages
+import TicketForm from "@/pages/user/Forms/TicketForm.vue";
+import Purchase from "@/pages/user/Forms/Purchase.vue";
+
+// TableList pages
+import Withdraw from "@/pages/user/Withdraw.vue";
+import TicketDetail from "@/pages/user/TicketDetail.vue";
+import Transaction from "@/pages/user/Transaction.vue";
+
 Vue.use(Router);
-
-let componentsMenu = {
-  path: "/components",
-  component: DashboardLayout,
-  redirect: "/components/buttons",
-  name: "Components",
-  children: [
-    {
-      path: "buttons",
-      name: "Buttons",
-      components: { default: Buttons },
-    },
-    {
-      path: "grid-system",
-      name: "Grid System",
-      components: { default: GridSystem },
-    },
-    {
-      path: "panels",
-      name: "Panels",
-      components: { default: Panels },
-    },
-    {
-      path: "sweet-alert",
-      name: "Sweet Alert",
-      components: { default: SweetAlert },
-    },
-    {
-      path: "notifications",
-      name: "Notifications",
-      components: { default: Notifications },
-    },
-    {
-      path: "icons",
-      name: "Icons",
-      components: { default: Icons },
-    },
-    {
-      path: "typography",
-      name: "Typography",
-      components: { default: Typography },
-    },
-  ],
-};
-let formsMenu = {
-  path: "/forms",
-  component: DashboardLayout,
-  redirect: "/forms/regular",
-  name: "Forms",
-  children: [
-    {
-      path: "regular",
-      name: "Regular Forms",
-      components: { default: RegularForms },
-    },
-    {
-      path: "extended",
-      name: "Extended Forms",
-      components: { default: ExtendedForms },
-    },
-    {
-      path: "validation",
-      name: "Validation Forms",
-      components: { default: ValidationForms },
-    },
-    {
-      path: "wizard",
-      name: "Wizard",
-      components: { default: Wizard },
-    },
-  ],
-};
-
-let tablesMenu = {
-  path: "/table-list",
-  component: DashboardLayout,
-  redirect: "/table-list/regular",
-  name: "Tables",
-  children: [
-    {
-      path: "regular",
-      name: "Regular Tables",
-      components: { default: RegularTables },
-    },
-    {
-      path: "extended",
-      name: "Extended Tables",
-      components: { default: ExtendedTables },
-    },
-    {
-      path: "paginated",
-      name: "Pagianted Tables",
-      components: { default: PaginatedTables },
-    },
-  ],
-};
-
-let mapsMenu = {
-  path: "/maps",
-  component: DashboardLayout,
-  name: "Maps",
-  redirect: "/maps/google",
-  children: [
-    {
-      path: "google",
-      name: "Google Maps",
-      components: { default: GoogleMaps },
-    },
-    {
-      path: "full-screen",
-      name: "Full Screen Map",
-      meta: {
-        hideContent: true,
-        hideFooter: true,
-        navbarAbsolute: true,
-      },
-      components: { default: FullScreenMap },
-    },
-    {
-      path: "vector-map",
-      name: "Vector Map",
-      components: { default: VectorMaps },
-    },
-  ],
-};
 
 let pagesMenu = {
   path: "/pages",
@@ -257,10 +104,6 @@ const routes = [
     name: "Home",
     meta: { requiresAuth: true },
   },
-  formsMenu,
-  componentsMenu,
-  tablesMenu,
-  mapsMenu,
   pagesMenu,
   support,
   {
@@ -278,16 +121,6 @@ const routes = [
         name: "authentication",
         components: { default: Authentication },
         meta: { requiresAuth: true },
-      },
-      {
-        path: "calendar",
-        name: "Calendar",
-        components: { default: Calendar },
-      },
-      {
-        path: "charts",
-        name: "Charts",
-        components: { default: Charts },
       },
       {
         path: "invest",
@@ -308,11 +141,6 @@ const routes = [
         path: "transaction",
         name: "Transaction",
         components: { default: Transaction },
-      },
-      {
-        path: "widgets",
-        name: "Widgets",
-        components: { default: Widgets },
       },
       {
         path: "wallet",
