@@ -4,19 +4,18 @@ import Router from "vue-router";
 
 import logger from "@/logger.js";
 
+// Layouts
 import DashboardLayout from "@/pages/user/Layout/DashboardLayout.vue";
-import AuthLayout from "@/pages/user/Pages/AuthLayout.vue";
-
-// Dashboard pages
-import Dashboard from "@/pages/user/Dashboard.vue";
+import AuthLayout from "@/pages/user/Layout/AuthLayout.vue";
 
 // Pages
-import User from "@/pages/user/Pages/UserProfile.vue";
-import Roadmap from "@/pages/user/Pages/Roadmap.vue";
-import Login from "@/pages/user/Pages/Login.vue";
-import Register from "@/pages/user/Pages/Register.vue";
-import Package from "@/pages/user/Pages/Package.vue";
-import PageNotFound from "@/pages/user/Pages/PageNotFound.vue";
+import Dashboard from "@/pages/user/Dashboard.vue";
+import User from "@/pages/user/UserProfile.vue";
+import Roadmap from "@/pages/user/Roadmap.vue";
+import Login from "@/pages/user/Login.vue";
+import Register from "@/pages/user/Register.vue";
+import Package from "@/pages/user/Package.vue";
+import PageNotFound from "@/pages/user/PageNotFound.vue";
 import Invest from "@/pages/user/Invest.vue";
 import Support from "@/pages/user/Support.vue";
 import Authentication from "@/pages/user/Authentication.vue";
@@ -24,14 +23,10 @@ import Network from "@/pages/user/Network.vue";
 import Wallet from "@/pages/user/Wallet.vue";
 import Direct from "@/pages/user/Direct.vue";
 import Binary from "@/pages/user/Binary.vue";
-
-// Forms pages
-import TicketForm from "@/pages/user/Forms/TicketForm.vue";
-import Purchase from "@/pages/user/Forms/Purchase.vue";
-
-// TableList pages
+import TicketForm from "@/pages/user/Ticket/TicketForm.vue";
+import TicketDetail from "@/pages/user/Ticket/TicketDetail.vue";
+import Purchase from "@/pages/user/Purchase/Purchase.vue";
 import Withdraw from "@/pages/user/Withdraw.vue";
-import TicketDetail from "@/pages/user/TicketDetail.vue";
 import Transaction from "@/pages/user/Transaction.vue";
 
 Vue.use(Router);
