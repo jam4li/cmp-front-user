@@ -54,7 +54,7 @@
             Last Invest: {{ binaryInfo.last_invest }} $
           </h4>
           <h4 slot="title" class="title">
-            Total Invest: {{ binaryInfo.total_invest }} $
+            Total Active Invest: {{ binaryInfo.total_active_invest }} $
           </h4>
         </binary-card>
       </div>
